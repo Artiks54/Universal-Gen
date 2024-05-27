@@ -78,6 +78,7 @@ public class CobbleGenBlock extends Block {
     public @NotNull AxisAlignedBB getBoundingBox(@NotNull IBlockState state, @NotNull IBlockAccess source, @NotNull BlockPos pos) {
         return new AxisAlignedBB(0.062, 0, 0.062, 0.938, 0.875, 0.938);
     }
+    @Override
     public boolean isOpaqueCube(@NotNull IBlockState state) {return false;}
     @Override
     public boolean isNormalCube(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos) {return false;}
