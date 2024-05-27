@@ -1,6 +1,7 @@
 package com.ariks.cobblegen;
 
 import com.ariks.cobblegen.proxy.CommonProxy;
+import com.ariks.cobblegen.util.Config;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -12,9 +13,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import java.io.File;
 
 @Mod(modid = CobbleGen.MOD_ID, version = CobbleGen.VERSION, name = CobbleGen.MOD_NAME,useMetadata = true, acceptedMinecraftVersions = "[1.12]")
 public class CobbleGen {
+    public static File config;
     public static final String MOD_ID = "cobblegen";
     public static final String MOD_NAME = "Cobble Gen";
     public static final String VERSION = "1.0";
@@ -25,6 +28,7 @@ public class CobbleGen {
     public static CommonProxy proxy;
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        Config.registerConfig(event);
         proxy.preInit();
         logger = event.getModLog();
     }
@@ -36,7 +40,7 @@ public class CobbleGen {
     public void postInit(FMLPostInitializationEvent event){
         proxy.postInit();
     }
-    public static CreativeTabs CobbleGenTab = new CreativeTabs("Cobble-Gen") {
+    public static CreativeTabs CobbleGenTab = new CreativeTabs("CobbleGen") {
         @Override
         public @NotNull ItemStack getTabIconItem() {
             return new ItemStack(Blocks.COBBLESTONE);

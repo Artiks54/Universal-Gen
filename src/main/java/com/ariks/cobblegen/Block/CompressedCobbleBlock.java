@@ -15,10 +15,10 @@ public class CompressedCobbleBlock extends Block {
         this.setRegistryName(name);
         this.setUnlocalizedName(name);
         this.setCreativeTab(CobbleGen.CobbleGenTab);
-        this.setHardness(2.0F);
-        this.setResistance(3.5f);
+        this.setHardness(3.5F);
+        this.setResistance(6.5f);
         this.setSoundType(SoundType.METAL);
-        this.setHarvestLevel("pickaxe", 1);
+        this.setHarvestLevel("pickaxe", 2);
     }
     @Override
     public boolean canHarvestBlock(@NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull EntityPlayer player) {

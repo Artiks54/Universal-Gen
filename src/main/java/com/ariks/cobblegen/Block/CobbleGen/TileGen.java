@@ -15,35 +15,30 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 
-public class TileCobbleGen extends TileEntityLockable implements ITickable {
+public class TileGen extends TileEntityLockable implements ITickable {
     private final ItemStackHandler inventory = new ItemStackHandler(1) {@Override protected void onContentsChanged(int slot) {markDirty();}};
-    public final int id;
-    private ItemStack itemStack;
+    public int count;
+    public int speed;
     private int progress;
-    public TileCobbleGen(int id) {
-        this.id = id;
-    }
     @Override
     public void update() {
         if (!world.isRemote) {
-            SetComponentGen();
-            if (itemStack == null) return;
             if (inventory.getStackInSlot(0).isEmpty() || inventory.getStackInSlot(0).getCount() < 64) {
                 progress++;
-                if (progress >= 20) {
-                    inventory.insertItem(0, itemStack, false);
-                    progress = 0;
-                }
             }
-        }
-    }
-    private void SetComponentGen(){
-        switch (id){
-            case 1: itemStack = new ItemStack(Blocks.COBBLESTONE);break;
-            case 2: itemStack = new ItemStack(Blocks.IRON_BLOCK);break;
-            case 3: itemStack = new ItemStack(Blocks.DIAMOND_BLOCK);break;
-            case 4: itemStack = new ItemStack(Blocks.GOLD_BLOCK);break;
-            case 5: itemStack = new ItemStack(Blocks.EMERALD_BLOCK);break;
+            if (inventory.getStackInSlot(0).getCount() == 64) {
+                progress = 0;
+            }
+            if (progress >= speed) {
+                if (inventory.getStackInSlot(0).isEmpty()) {
+                    inventory.insertItem(0, new ItemStack(Blocks.COBBLESTONE, count), false);
+                } else if (inventory.getStackInSlot(0).getCount() < 64) {
+                    int availableSpace = 64 - inventory.getStackInSlot(0).getCount();
+                    int toAdd = Math.min(count, availableSpace);
+                    inventory.getStackInSlot(0).grow(toAdd);
+                }
+                progress = 0;
+            }
         }
     }
     @Override
@@ -51,6 +46,8 @@ public class TileCobbleGen extends TileEntityLockable implements ITickable {
         super.writeToNBT(nbt);
         nbt.setTag("inventory", inventory.serializeNBT());
         nbt.setInteger("progress", progress);
+        nbt.setInteger("count",count);
+        nbt.setInteger("speed",speed);
         return nbt;
     }
     @Override
@@ -58,6 +55,8 @@ public class TileCobbleGen extends TileEntityLockable implements ITickable {
         super.readFromNBT(nbt);
         inventory.deserializeNBT(nbt.getCompoundTag("inventory"));
         progress = nbt.getInteger("progress");
+        count = nbt.getInteger("count");
+        speed = nbt.getInteger("speed");
     }
     @Override
     public int getSizeInventory() {
@@ -103,18 +102,12 @@ public class TileCobbleGen extends TileEntityLockable implements ITickable {
     public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack) {
         return false;
     }
-    public int getField(int id)
-    {
-        if (id == 1) {
-            return this.progress;
-        }
-        return id;
+    @Override
+    public int getField(int id) {
+        return 0;
     }
-    public void setField(int id, int value)
-    {
-        if (id == 1) {
-            this.progress = value;
-        }
+    @Override
+    public void setField(int id, int value) {
     }
     @Override
     public int getFieldCount() {
@@ -130,7 +123,7 @@ public class TileCobbleGen extends TileEntityLockable implements ITickable {
     }
     @Override
     public boolean hasCustomName() {
-        return true;
+        return false;
     }
     @Nonnull
     @Override

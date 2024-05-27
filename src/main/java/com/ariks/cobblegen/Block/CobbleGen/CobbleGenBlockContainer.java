@@ -7,8 +7,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 public class CobbleGenBlockContainer extends Container {
-    private final TileCobbleGen tileEntity;
-    public CobbleGenBlockContainer(InventoryPlayer playerInventory, TileCobbleGen tileEntity, EntityPlayer player) {
+    private final TileGen tileEntity;
+    public CobbleGenBlockContainer(InventoryPlayer playerInventory, TileGen tileEntity, EntityPlayer player) {
         this.tileEntity = tileEntity;
         this.addSlotToContainer(new Slot(tileEntity, 0, 141, 36) {
             @Override
