@@ -1,12 +1,14 @@
 {
     "__author": "artiks4471",
     "textures": {
-        "iron": "#material",
-        "base": "#base"
+        "lava": "#lava",
+        "base": "#base",
+		"water": "#water",
+		"cobblestone": "#cobblestone"
     },
     "elements": [
         {
-            "name": "t1",
+            "name": "Cube",
             "from": [ 1, 0, 1 ], 
             "to": [ 15, 1, 2 ], 
             "faces": {
@@ -19,7 +21,7 @@
             }
         },
         {
-            "name": "t2",
+            "name": "Cube",
             "from": [ 1, 1, 1 ], 
             "to": [ 2, 13, 2 ], 
             "faces": {
@@ -30,7 +32,7 @@
             }
         },
         {
-            "name": "t3",
+            "name": "Cube",
             "from": [ 14, 1, 1 ], 
             "to": [ 15, 13, 2 ], 
             "faces": {
@@ -41,7 +43,7 @@
             }
         },
         {
-            "name": "t4",
+            "name": "Cube",
             "from": [ 14, 1, 14 ], 
             "to": [ 15, 13, 15 ], 
             "faces": {
@@ -52,7 +54,7 @@
             }
         },
         {
-            "name": "t5",
+            "name": "Cube",
             "from": [ 1, 1, 14 ], 
             "to": [ 2, 13, 15 ], 
             "faces": {
@@ -63,7 +65,7 @@
             }
         },
         {
-            "name": "t6",
+            "name": "Cube",
             "from": [ 1, 0, 14 ], 
             "to": [ 15, 1, 15 ], 
             "faces": {
@@ -76,7 +78,7 @@
             }
         },
         {
-            "name": "t7",
+            "name": "Cube",
             "from": [ 1, 13, 14 ], 
             "to": [ 15, 14, 15 ], 
             "faces": {
@@ -89,7 +91,7 @@
             }
         },
         {
-            "name": "t8",
+            "name": "Cube",
             "from": [ 1, 13, 1 ], 
             "to": [ 15, 14, 2 ], 
             "faces": {
@@ -102,7 +104,7 @@
             }
         },
         {
-            "name": "t9",
+            "name": "Cube",
             "from": [ 1, 0, 2 ], 
             "to": [ 2, 1, 14 ], 
             "faces": {
@@ -113,7 +115,7 @@
             }
         },
         {
-            "name": "t10",
+            "name": "Cube",
             "from": [ 1, 13, 2 ], 
             "to": [ 2, 14, 14 ], 
             "faces": {
@@ -124,7 +126,7 @@
             }
         },
         {
-            "name": "t11",
+            "name": "Cube",
             "from": [ 14, 13, 2 ], 
             "to": [ 15, 14, 14 ], 
             "faces": {
@@ -135,7 +137,7 @@
             }
         },
         {
-            "name": "t12",
+            "name": "Cube",
             "from": [ 14, 0, 2 ], 
             "to": [ 15, 1, 14 ], 
             "faces": {
@@ -146,16 +148,38 @@
             }
         },
         {
-            "name": "t13",
+            "name": "Lava",
             "from": [ 2, 1, 2 ], 
+            "to": [ 14, 6, 14 ], 
+            "faces": {
+                "north": { "texture": "#lava", "uv": [ 0, 5, 12, 10 ] },
+                "east": { "texture": "#lava", "uv": [ 0, 0, 12, 5 ] },
+                "south": { "texture": "#lava", "uv": [ 0, 0, 12, 5 ] },
+                "west": { "texture": "#lava", "uv": [ 0, 0, 12, 5 ] },
+                "down": { "texture": "#lava", "uv": [ 0, 0, 12, 12 ] }
+            }
+        },
+        {
+            "name": "water",
+            "from": [ 2, 8, 2 ], 
             "to": [ 14, 13, 14 ], 
             "faces": {
-                "north": { "texture": "#material", "uv": [ 2, 2, 14, 14 ], "cullface": "north" },
-                "east": { "texture": "#material", "uv": [ 2, 3, 14, 15 ], "cullface": "east" },
-                "south": { "texture": "#material", "uv": [ 2, 2, 14, 14 ], "cullface": "south" },
-                "west": { "texture": "#material", "uv": [ 2, 2, 13, 14 ], "cullface": "west" },
-                "up": { "texture": "#material", "uv": [ 2, 2, 14, 14 ], "cullface": "up" },
-                "down": { "texture": "#material", "uv": [ 2, 2, 14, 14 ], "cullface": "down" }
+                "north": { "texture": "#water", "uv": [ 0, 5, 12, 10 ] },
+                "east": { "texture": "#water", "uv": [ 0, 0, 12, 5 ] },
+                "south": { "texture": "#water", "uv": [ 0, 0, 12, 5 ] },
+                "west": { "texture": "#water", "uv": [ 0, 0, 12, 5 ] },
+                "up": { "texture": "#water", "uv": [ 0, 0, 12, 12 ] }
+            }
+        },
+        {
+            "name": "cobble",
+            "from": [ 2, 6, 2 ], 
+            "to": [ 14, 8, 14 ], 
+            "faces": {
+                "north": { "texture": "#cobblestone", "uv": [ 0, 5, 12, 7 ] },
+                "east": { "texture": "#cobblestone", "uv": [ 0, 0, 12, 2 ] },
+                "south": { "texture": "#cobblestone", "uv": [ 0, 0, 12, 2 ] },
+                "west": { "texture": "#cobblestone", "uv": [ 0, 0, 12, 2 ] }
             }
         }
     ]

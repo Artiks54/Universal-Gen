@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cobblegen:cobblegen",
+	    "textures": {
+        "base": "cobblegen:blocks/base",
+		"cobblestone": "cobblegen:blocks/cobblestone",
+		"lava": "cobblegen:blocks/lava",
+		"water": "cobblegen:blocks/water",
+        "particle":  "cobblegen:blocks/base"
+        },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "destroyed": [{}]
+  }
+}

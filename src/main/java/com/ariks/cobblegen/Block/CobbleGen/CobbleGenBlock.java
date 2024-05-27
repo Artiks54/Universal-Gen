@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -73,4 +74,13 @@ public class CobbleGenBlock extends Block {
                     "CobbleGen-log: Block place: "+getUnlocalizedName()+" Cord: " + pos.getX() + "," + pos.getY() + "," + pos.getZ()+" DismID: "+worldIn.provider.getDimension()+" PlayerName: "+placer.getName());
         }
     }
+    @Override
+    public @NotNull AxisAlignedBB getBoundingBox(@NotNull IBlockState state, @NotNull IBlockAccess source, @NotNull BlockPos pos) {
+        return new AxisAlignedBB(0.062, 0, 0.062, 0.938, 0.875, 0.938);
+    }
+    public boolean isOpaqueCube(@NotNull IBlockState state) {return false;}
+    @Override
+    public boolean isNormalCube(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos) {return false;}
+    @Override
+    public boolean isFullCube(@NotNull IBlockState state) {return false;}
 }

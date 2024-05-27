@@ -16,10 +16,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class RegistryBlock {
-    public static Block CobbleGenLvl1 = new CobbleGenBlock("CobbleGenLvl1",CobbleGenBlockEnum.lvl_1);
-    public static Block CobbleGenLvl2 = new CobbleGenBlock("CobbleGenLvl2",CobbleGenBlockEnum.lvl_2);
-    public static Block CobbleGenLvl3 = new CobbleGenBlock("CobbleGenLvl3",CobbleGenBlockEnum.lvl_3);
-    public static Block CobbleGenLvl4 = new CobbleGenBlock("CobbleGenLvl4",CobbleGenBlockEnum.lvl_4);
+    public static Block CobbleGenLvl1 = new CobbleGenBlock("cobble_gen_lvl1",CobbleGenBlockEnum.lvl_1);
+    public static Block CobbleGenLvl2 = new CobbleGenBlock("cobble_gen_lvl2",CobbleGenBlockEnum.lvl_2);
+    public static Block CobbleGenLvl3 = new CobbleGenBlock("cobble_gen_lvl3",CobbleGenBlockEnum.lvl_3);
+    public static Block CobbleGenLvl4 = new CobbleGenBlock("cobble_gen_lvl4",CobbleGenBlockEnum.lvl_4);
     public static final List<Block> BLOCKS = new ArrayList<>();
     static {
         Field[] fields = RegistryBlock.class.getDeclaredFields();
