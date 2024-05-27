@@ -3,11 +3,11 @@
   "defaults": {
     "model": "cobblegen:cobblegen",
 	    "textures": {
-        "base": "cobblegen:blocks/base",
+        "base": "cobblegen:blocks/diamond",
 		"cobblestone": "cobblegen:blocks/cobblestone",
 		"lava": "cobblegen:blocks/lava",
 		"water": "cobblegen:blocks/water",
-        "particle":  "cobblegen:blocks/base"
+        "particle":  "cobblegen:blocks/diamond"
         },
     "transform": "forge:default-block"
   },

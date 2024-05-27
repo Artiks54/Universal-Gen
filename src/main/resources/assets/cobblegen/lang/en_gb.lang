@@ -1,3 +1,18 @@
 //Localized by artiks4471
 
 itemGroup.CobbleGen=CobbleGen
+
+tile.c1.name=1x cobblestone
+tile.c2.name=2x cobblestone
+tile.c3.name=3x cobblestone
+tile.c4.name=4x cobblestone
+tile.c5.name=5x cobblestone
+tile.c6.name=6x cobblestone
+tile.c7.name=7x cobblestone
+tile.c8.name=8x cobblestone
+tile.c9.name=9x cobblestone
+
+tile.cobble_gen_lvl1.name=Iron cobblestone generator
+tile.cobble_gen_lvl2.name=Gold cobblestone generator
+tile.cobble_gen_lvl3.name=Diamond cobblestone generator
+tile.cobble_gen_lvl4.name=Emerald cobblestone generator

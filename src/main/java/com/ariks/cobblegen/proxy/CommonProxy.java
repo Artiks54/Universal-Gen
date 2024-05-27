@@ -9,6 +9,7 @@ public class CommonProxy {
     public void preInit() {
         RegistryBlock.preInit();
         RegistryTile.preInit();
+        RegistryReciep.preInit();
         NetworkRegistry.INSTANCE.registerGuiHandler(CobbleGen.instance, new RegistryGui());
     }
     public void Init(){

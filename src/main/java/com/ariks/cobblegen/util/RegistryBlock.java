@@ -2,6 +2,7 @@ package com.ariks.cobblegen.util;
 
 import com.ariks.cobblegen.Block.CobbleGen.CobbleGenBlock;
 import com.ariks.cobblegen.Block.CobbleGen.CobbleGenBlockEnum;
+import com.ariks.cobblegen.Block.CompressedCobbleBlock;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -20,6 +21,15 @@ public class RegistryBlock {
     public static Block CobbleGenLvl2 = new CobbleGenBlock("cobble_gen_lvl2",CobbleGenBlockEnum.lvl_2);
     public static Block CobbleGenLvl3 = new CobbleGenBlock("cobble_gen_lvl3",CobbleGenBlockEnum.lvl_3);
     public static Block CobbleGenLvl4 = new CobbleGenBlock("cobble_gen_lvl4",CobbleGenBlockEnum.lvl_4);
+    public static Block C1  = new CompressedCobbleBlock("c1","9 blocks");
+    public static Block C2  = new CompressedCobbleBlock("c2","81 blocks");
+    public static Block C3  = new CompressedCobbleBlock("c3","729 blocks");
+    public static Block C4  = new CompressedCobbleBlock("c4","6.561 blocks");
+    public static Block C5  = new CompressedCobbleBlock("c5","59.049 blocks");
+    public static Block C6  = new CompressedCobbleBlock("c6","531.441 blocks");
+    public static Block C7  = new CompressedCobbleBlock("c7","4.782.969 blocks");
+    public static Block C8  = new CompressedCobbleBlock("c8","43.046.721 blocks");
+    public static Block C9  = new CompressedCobbleBlock("c9","387.420.489 blocks");
     public static final List<Block> BLOCKS = new ArrayList<>();
     static {
         Field[] fields = RegistryBlock.class.getDeclaredFields();

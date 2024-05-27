@@ -2,8 +2,8 @@ package com.ariks.cobblegen;
 
 import com.ariks.cobblegen.proxy.CommonProxy;
 import com.ariks.cobblegen.util.Config;
+import com.ariks.cobblegen.util.RegistryBlock;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -43,7 +43,7 @@ public class CobbleGen {
     public static CreativeTabs CobbleGenTab = new CreativeTabs("CobbleGen") {
         @Override
         public @NotNull ItemStack getTabIconItem() {
-            return new ItemStack(Blocks.COBBLESTONE);
+            return new ItemStack(RegistryBlock.CobbleGenLvl1);
         }
     };
 }
