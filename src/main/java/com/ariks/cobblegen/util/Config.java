@@ -13,7 +13,7 @@ public class Config {
     private final static String count = "_count";
     private final static String TextS = "The speed in ticks to generate";
     private final static String TextC = "Number of items";
-    public static boolean IntegrationProjectE,IntegrationTheOneProbeTA,DebugMod;
+    public static boolean DebugMod;
     public static int speed_1,speed_2,speed_3,speed_4;
     public static int count_1,count_2,count_3,count_4;
     public static void init(File file) {
@@ -24,9 +24,8 @@ public class Config {
             config.setCategoryComment(General,"General settings");
             config.setCategoryComment(Tile,"TileEntity settings .Before changing these values, it is best to destroy the already installed TileEntity \n" +
                     "If this is not possible, then in order for the value in TileEntity to change, it will need to be set again.");
-            DebugMod = config.getBoolean("Debug_Mode",General,true,"Debug modes");
+            DebugMod = config.getBoolean("Debug_Mode",General,false,"Debug modes");
             BooleanHelloMsg = config.getBoolean("Hello_Message",General,true,"Send chat hello message");
-            IntegrationProjectE = config.getBoolean("integration_top_addons",General,true,"Integration TheOneProbe-TopAddons");
 //lvl_1
             TileName = "Cobblestone_generator_lvl1";
             speed_1 = config.getInt(TileName+speed,Tile,20,1,Short.MAX_VALUE,TextS);
