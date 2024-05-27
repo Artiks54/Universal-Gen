@@ -10,25 +10,33 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-@Mod(modid = CobbleGen.MODID, version = CobbleGen.VERSION, name = CobbleGen.NAME)
+@Mod(modid = CobbleGen.MOD_ID, version = CobbleGen.VERSION, name = CobbleGen.MOD_NAME,useMetadata = true, acceptedMinecraftVersions = "[1.12]")
 public class CobbleGen {
-    public static final String MODID = "cobblegen";
-    public static final String NAME = "Cobble Gen";
+    public static final String MOD_ID = "cobblegen";
+    public static final String MOD_NAME = "Cobble Gen";
     public static final String VERSION = "1.0";
+    public static Logger logger;
+    @Mod.Instance(CobbleGen.MOD_ID)
+    public static CobbleGen instance;
     @SidedProxy(clientSide = "com.ariks.cobblegen.proxy.ClientProxy", serverSide = "com.ariks.cobblegen.proxy.CommonProxy")
     public static CommonProxy proxy;
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        proxy.preInit();
+        logger = event.getModLog();
     }
     @EventHandler
     public void init(FMLInitializationEvent event){
+        proxy.Init();
     }
     @EventHandler
     public void postInit(FMLPostInitializationEvent event){
+        proxy.postInit();
     }
-    public static CreativeTabs tabExampleMod = new CreativeTabs("Cobble-Gen") {
+    public static CreativeTabs CobbleGenTab = new CreativeTabs("Cobble-Gen") {
         @Override
         public @NotNull ItemStack getTabIconItem() {
             return new ItemStack(Blocks.COBBLESTONE);
