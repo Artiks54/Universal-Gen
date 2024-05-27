@@ -6,11 +6,12 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
 public class CobbleGenBlockContainer extends Container {
     private final TileGen tileEntity;
     public CobbleGenBlockContainer(InventoryPlayer playerInventory, TileGen tileEntity, EntityPlayer player) {
         this.tileEntity = tileEntity;
-        this.addSlotToContainer(new Slot(tileEntity, 0, 141, 36) {
+        this.addSlotToContainer(new Slot(tileEntity, 0, 80, 35) {
             @Override
             public boolean isItemValid(@NotNull ItemStack stack) {
                 return false;
