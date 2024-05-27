@@ -2,17 +2,17 @@
 
 itemGroup.CobbleGen=CobbleGen
 
-tile.c1.name=1x бруківка
-tile.c2.name=2x бруківка
-tile.c3.name=3x бруківка
-tile.c4.name=4x бруківка
-tile.c5.name=5x бруківка
-tile.c6.name=6x бруківка
-tile.c7.name=7x бруківка
-tile.c8.name=8x бруківка
-tile.c9.name=9x бруківка
+tile.c1.name=1x Кругляк
+tile.c2.name=2x Кругляк
+tile.c3.name=3x Кругляк
+tile.c4.name=4x Кругляк
+tile.c5.name=5x Кругляк
+tile.c6.name=6x Кругляк
+tile.c7.name=7x Кругляк
+tile.c8.name=8x Кругляк
+tile.c9.name=9x Кругляк
 
-tile.cobble_gen_lvl1.name=Залізний Генератор бруківки
-tile.cobble_gen_lvl1.name=Золотий Генератор бруківки
-tile.cobble_gen_lvl1.name=алмазний Генератор бруківки
-tile.cobble_gen_lvl1.name=смарагдовий Генератор бруківки
+tile.cobble_gen_lvl1.name=Залізний генератор кругляку
+tile.cobble_gen_lvl2.name=Золотий генератор кругляку
+tile.cobble_gen_lvl3.name=Діамантовий генератор кругляку
+tile.cobble_gen_lvl4.name=Смарагдовий генератор кругляку

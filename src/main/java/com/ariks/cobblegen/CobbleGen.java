@@ -20,7 +20,7 @@ public class CobbleGen {
     public static File config;
     public static final String MOD_ID = "cobblegen";
     public static final String MOD_NAME = "Cobble Gen";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.1";
     public static Logger logger;
     @Mod.Instance(CobbleGen.MOD_ID)
     public static CobbleGen instance;
