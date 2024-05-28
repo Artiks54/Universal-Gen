@@ -14,3 +14,4 @@
 
 # Websites download mod
 ## https://modrinth.com/project/cobblestonegen
+## https://www.curseforge.com/minecraft/mc-mods/cobblestone-gen
