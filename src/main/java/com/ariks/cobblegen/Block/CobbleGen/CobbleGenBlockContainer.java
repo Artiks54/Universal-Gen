@@ -1,5 +1,8 @@
 package com.ariks.cobblegen.Block.CobbleGen;
 
+import net.minecraft.inventory.IContainerListener;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -9,6 +12,8 @@ import net.minecraft.item.ItemStack;
 
 public class CobbleGenBlockContainer extends Container {
     private final TileGen tileEntity;
+    private int progress;
+    private int speed;
     public CobbleGenBlockContainer(InventoryPlayer playerInventory, TileGen tileEntity, EntityPlayer player) {
         this.tileEntity = tileEntity;
         this.addSlotToContainer(new Slot(tileEntity, 0, 80, 35) {
@@ -60,6 +65,34 @@ public class CobbleGenBlockContainer extends Container {
             slot.onTake(player, slotStack);
         }
         return itemstack;
+    }
+    @Override
+    public void addListener(@NotNull IContainerListener listener) {
+        super.addListener(listener);
+        listener.sendAllWindowProperties(this, this.tileEntity);
+    }
+    @Override
+    public void detectAndSendChanges() {
+        super.detectAndSendChanges();
+        int newProgress = this.tileEntity.getField(1);
+        int newSpeed = this.tileEntity.getField(2);
+        if (this.progress != newProgress) {
+            for (IContainerListener listener : this.listeners) {
+                listener.sendWindowProperty(this, 1, newProgress);
+            }
+            this.progress = newProgress;
+        }
+        if (this.speed != newSpeed) {
+            for (IContainerListener listener : this.listeners) {
+                listener.sendWindowProperty(this, 2, newSpeed);
+            }
+            this.speed = newSpeed;
+        }
+    }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void updateProgressBar(int id, int data) {
+        this.tileEntity.setField(id, data);
     }
     @Override
     public boolean canInteractWith(@NotNull EntityPlayer entityPlayer) {

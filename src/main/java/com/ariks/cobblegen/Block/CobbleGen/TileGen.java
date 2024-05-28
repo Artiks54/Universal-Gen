@@ -29,7 +29,7 @@ public class TileGen extends TileEntityLockable implements ITickable {
             if (inventory.getStackInSlot(0).getCount() == 64) {
                 progress = 0;
             }
-            if (progress >= speed) {
+            if (progress == speed) {
                 if (inventory.getStackInSlot(0).isEmpty()) {
                     inventory.insertItem(0, new ItemStack(Blocks.COBBLESTONE, count), false);
                 } else if (inventory.getStackInSlot(0).getCount() < 64) {
@@ -102,16 +102,27 @@ public class TileGen extends TileEntityLockable implements ITickable {
     public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack) {
         return false;
     }
-    @Override
     public int getField(int id) {
-        return 0;
+       if(id == 1){
+           return progress;
+       }
+        if(id == 2){
+            return speed;
+        }
+        return id;
     }
-    @Override
+
     public void setField(int id, int value) {
+        if(id == 1){
+            progress = value;
+        }
+        if(id == 2){
+            speed = value;
+        }
     }
-    @Override
-    public int getFieldCount() {
-        return 1;
+    public int getFieldCount()
+    {
+        return 2;
     }
     @Override
     public void clear() {
