@@ -16,22 +16,21 @@ public class CobbleGenGui extends GuiContainer {
     }
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
         this.renderHoveredToolTip(mouseX,mouseY);
     }
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        this.drawDefaultBackground();
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(texture);
         int x = (this.width - xSize) / 2;
         int y = (this.height - ySize) / 2;
         drawTexturedModalRect(x, y, 0, 0, xSize,ySize);
-
         int progress = tileGen.getField(1);
         int maxProgress = tileGen.getField(2);
         int fix = 1;
-        int wightTexture = 40;
+        int wightTexture = 41;
         int heightTexture = 50;
         //Left to right
         int StartX_left_to_right = 34;
@@ -40,10 +39,10 @@ public class CobbleGenGui extends GuiContainer {
         int StartX_right_to_left = 141+fix;
         int StartY_right_to_left = 18;
         //draw
-        int draw = (progress * (wightTexture + 1)) / (maxProgress + 1);
+        double draw = (double) (progress * (wightTexture + 1)) / (maxProgress + 1);
         //Left to right
-        drawTexturedModalRect(x + StartX_left_to_right, y + StartY_left_to_right, 176, 0,draw, heightTexture);
+        drawTexturedModalRect(x + StartX_left_to_right, y + StartY_left_to_right, 176, 0,(int) draw, heightTexture);
         //Right to left
-        drawTexturedModalRect(x + StartX_right_to_left - draw, y + StartY_right_to_left,(255+fix) - draw , 0,draw, heightTexture);
+        drawTexturedModalRect(x + StartX_right_to_left - (int) draw, y + StartY_right_to_left,(255+fix) - (int) draw , 0,(int) draw, heightTexture);
     }
 }
