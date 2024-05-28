@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 public class CobbleGenGui extends GuiContainer {
     private final TileGen tileGen;
-    private final ResourceLocation texture = new ResourceLocation(CobbleGen.MOD_ID, "textures/gui/gui1.png");
+    private final ResourceLocation texture = new ResourceLocation(CobbleGen.MOD_ID, "textures/gui/gui.png");
     public CobbleGenGui(InventoryPlayer inventory, TileGen tileEntity, EntityPlayer player) {
         super(new CobbleGenBlockContainer(inventory,tileEntity,player));
         this.tileGen = tileEntity;
