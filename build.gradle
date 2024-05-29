@@ -17,8 +17,8 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-group = 'com.ariks.cobblegen'
-archivesBaseName = 'cobblegen'
+group = 'com.ariks.sandgen'
+archivesBaseName = 'sandgen'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
 minecraft {

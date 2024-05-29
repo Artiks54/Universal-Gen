@@ -1,0 +1,214 @@
+package com.ariks.sandgen.Block.CobbleGen;
+
+import com.ariks.sandgen.util.RegistryGui;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityLockable;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
+public class TileGen extends TileEntityLockable implements ITickable {
+    private final ItemStackHandler inventory = new ItemStackHandler(1) {@Override protected void onContentsChanged(int slot) {markDirty();}};
+    public int count;
+    public int speed;
+    private int progress;
+    private int invprogrss;
+    @Override
+    public void update() {
+        if (!world.isRemote) {
+            boolean inventoryFound = false;
+            boolean isInventoryFull = true;
+            for (EnumFacing facing : EnumFacing.VALUES) {
+                BlockPos neighborPos = this.pos.offset(facing);
+                TileEntity tileEntity = world.getTileEntity(neighborPos);
+                if(tileEntity instanceof TileGen){
+                    break;
+                }
+                if (tileEntity instanceof IInventory) {
+                    IInventory inventory = (IInventory) tileEntity;
+                    boolean foundEmptySlot = false;
+                    for (int slot = 0; slot < inventory.getSizeInventory(); slot++) {
+                        ItemStack stack = inventory.getStackInSlot(slot);
+                        ItemStack newStack = new ItemStack(Blocks.SAND, count);
+                        if (stack.isEmpty()) {
+                            if (inventory.isItemValidForSlot(slot, newStack )) {
+                                if(invprogrss >= speed){
+                                    invprogrss = 0;
+                                    inventory.setInventorySlotContents(slot, newStack);
+                                }
+                                foundEmptySlot = true;
+                                isInventoryFull = false;
+                                break;
+                            }
+                        } else if (stack.getCount() < 64 && stack.getItem() == Item.getItemFromBlock(Blocks.SAND)) {
+                            int availableSpace = 64 - stack.getCount();
+                            int toAdd = Math.min(count, availableSpace);
+                            if (inventory.isItemValidForSlot(slot, new ItemStack(Blocks.SAND, toAdd))) {
+                                if(invprogrss >= speed){
+                                    invprogrss = 0;
+                                    stack.grow(toAdd);
+                                    inventory.setInventorySlotContents(slot, stack);
+                                }
+                                foundEmptySlot = true;
+                                isInventoryFull = false;
+                                break;
+                            }
+                        }
+                    }
+                    if(foundEmptySlot){
+                        invprogrss++;
+                    }
+                    if (!foundEmptySlot) {
+                        isInventoryFull = true;
+                    } else {
+                        inventoryFound = true;
+                    }
+                }
+            }
+            if (!inventoryFound || isInventoryFull) {
+                this.GenerateCobblestoneMyInventory();
+            }
+        }
+    }
+    private void GenerateCobblestoneMyInventory(){
+        if (inventory.getStackInSlot(0).isEmpty() || inventory.getStackInSlot(0).getCount() < 64) {
+            progress++;
+        }
+        if (inventory.getStackInSlot(0).getCount() == 64) {
+            progress = 0;
+        }
+        if (progress >= speed) {
+            if (inventory.getStackInSlot(0).isEmpty()) {
+                inventory.insertItem(0, new ItemStack(Blocks.SAND, count), false);
+            } else if (inventory.getStackInSlot(0).getCount() < 64) {
+                int availableSpace = 64 - inventory.getStackInSlot(0).getCount();
+                int toAdd = Math.min(count, availableSpace);
+                inventory.getStackInSlot(0).grow(toAdd);
+            }
+            progress = 0;
+        }
+    }
+    @Override
+    public @NotNull NBTTagCompound writeToNBT(@NotNull NBTTagCompound nbt) {
+        super.writeToNBT(nbt);
+        nbt.setTag("inventory", inventory.serializeNBT());
+        nbt.setInteger("progress", progress);
+        nbt.setInteger("invprogrss", invprogrss);
+        nbt.setInteger("count",count);
+        nbt.setInteger("speed",speed);
+        return nbt;
+    }
+    @Override
+    public void readFromNBT(@NotNull NBTTagCompound nbt) {
+        super.readFromNBT(nbt);
+        inventory.deserializeNBT(nbt.getCompoundTag("inventory"));
+        progress = nbt.getInteger("progress");
+        invprogrss = nbt.getInteger("invprogrss");
+        count = nbt.getInteger("count");
+        speed = nbt.getInteger("speed");
+    }
+    @Override
+    public int getSizeInventory() {
+        return 1;
+    }
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+    @Override
+    public @NotNull ItemStack getStackInSlot(int index) {
+        return inventory.getStackInSlot(index);
+    }
+    @Nonnull
+    @Override
+    public ItemStack decrStackSize(int index, int count) {
+        return inventory.extractItem(index, count, false);
+    }
+    @Nonnull
+    @Override
+    public ItemStack removeStackFromSlot(int index) {
+        return inventory.extractItem(index, inventory.getSlotLimit(index), false);
+    }
+    @Override
+    public void setInventorySlotContents(int index, @Nonnull ItemStack stack) {
+        inventory.setStackInSlot(index, stack);
+    }
+    @Override
+    public int getInventoryStackLimit() {
+        return 64;
+    }
+    @Override
+    public boolean isUsableByPlayer(@Nonnull EntityPlayer player) {
+        return !isInvalid() && player.getDistanceSq(pos.add(0.5, 0.5, 0.5)) <= 64;
+    }
+    @Override
+    public void openInventory(@Nonnull EntityPlayer player) {
+    }
+    @Override
+    public void closeInventory(@Nonnull EntityPlayer player) {
+    }
+    @Override
+    public boolean isItemValidForSlot(int index, @Nonnull ItemStack stack) {
+        return false;
+    }
+    public int getField(int id) {
+       if(id == 1){
+           return progress;
+       }
+        if(id == 2){
+            return speed;
+        }
+        return id;
+    }
+
+    public void setField(int id, int value) {
+        if(id == 1){
+            progress = value;
+        }
+        if(id == 2){
+            speed = value;
+        }
+    }
+    public int getFieldCount()
+    {
+        return 2;
+    }
+    @Override
+    public void clear() {
+        this.inventory.setSize(0);
+    }
+    @Override
+    public @NotNull String getName() {
+        return "SandGen";
+    }
+    @Override
+    public boolean hasCustomName() {
+        return false;
+    }
+    @Nonnull
+    @Override
+    public ITextComponent getDisplayName() {
+        return new TextComponentString(getName());
+    }
+    @Override
+    public @NotNull Container createContainer(@NotNull InventoryPlayer playerInventory, @NotNull EntityPlayer playerIn) {
+        return new SandGenBlockContainer(playerInventory,this, playerIn);
+    }
+    @Override
+    public @NotNull String getGuiID() {
+        return String.valueOf(RegistryGui.GUI_SAND_GEN);
+    }
+}

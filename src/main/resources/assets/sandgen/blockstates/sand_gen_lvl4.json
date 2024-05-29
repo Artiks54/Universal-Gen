@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "sandgen:sandgen",
+	    "textures": {
+        "base": "sandgen:blocks/emerald",
+		"sand": "sandgen:blocks/sand",
+		"lava": "sandgen:blocks/lava",
+		"water": "sandgen:blocks/water",
+        "particle":  "sandgen:blocks/emerald"
+        },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "destroyed": [{}]
+  }
+}

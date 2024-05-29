@@ -1,8 +1,8 @@
 [
 	{
-		"modid": "cobblegen",
-		"name": "Cobble Gen",
-		"description": "Cobblestone Generator for 1.12.2",
+		"modid": "sandgen",
+		"name": "Sand Gen",
+		"description": "Sand Generator for 1.12.2",
 		"version": "1.12.2",
 		"mcversion": "1.12.2",
 		"url": "https://discord.gg/Mp5sEpE3B3",
