@@ -12,7 +12,7 @@ tile.s7.name=7x Песок
 tile.s8.name=8x Песок
 tile.s9.name=9x Песок
 
-tile.sand_gen_lvl1.name=Железный генератор песка
-tile.sand_gen_lvl2.name=Золотой генератор песка
-tile.sand_gen_lvl3.name=Алмазный генератор песка
-tile.sand_gen_lvl4.name=Изумрудный генератор песка
+tile.sand_gen_lvl1.name=§7Железный генератор песка
+tile.sand_gen_lvl2.name=§6Золотой генератор песка
+tile.sand_gen_lvl3.name=§bАлмазный генератор песка
+tile.sand_gen_lvl4.name=§aИзумрудный генератор песка

@@ -10,7 +10,7 @@ tile.s7.name=7x 沙子
 tile.s8.name=8x 沙子
 tile.s9.name=9x 沙子
 
-tile.sand_gen_lvl1.name=鐵砂產生器
-tile.sand_gen_lvl2.name=金沙產生器
-tile.sand_gen_lvl3.name=鑽石沙生成器
-tile.sand_gen_lvl4.name=翡翠沙生成器
+tile.sand_gen_lvl1.name=§7鐵砂產生器
+tile.sand_gen_lvl2.name=§6金沙產生器
+tile.sand_gen_lvl3.name=§b鑽石沙生成器
+tile.sand_gen_lvl4.name=§a翡翠沙生成器

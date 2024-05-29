@@ -12,7 +12,7 @@ tile.s7.name=7x sand
 tile.s8.name=8x sand
 tile.s9.name=9x sand
 
-tile.sand_gen_lvl1.name=Iron sand generator
-tile.sand_gen_lvl2.name=Gold sand generator
-tile.sand_gen_lvl3.name=Diamond sand generator
-tile.sand_gen_lvl4.name=Emerald sand generator
+tile.sand_gen_lvl1.name=§7Iron sand generator
+tile.sand_gen_lvl2.name=§6Gold sand generator
+tile.sand_gen_lvl3.name=§bDiamond sand generator
+tile.sand_gen_lvl4.name=§aEmerald sand generator

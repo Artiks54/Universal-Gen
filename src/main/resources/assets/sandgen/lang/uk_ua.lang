@@ -10,7 +10,7 @@ tile.s7.name=7x Пісок
 tile.s8.name=8x Пісок
 tile.s9.name=9x Пісок
 
-tile.sand_gen_lvl1.name=Залізний генератор піску
-tile.sand_gen_lvl2.name=Золотий генератор піску
-tile.sand_gen_lvl3.name=Алмазний генератор піску
-tile.sand_gen_lvl4.name=Смарагдовий генератор піску
+tile.sand_gen_lvl1.name=§7Залізний генератор піску
+tile.sand_gen_lvl2.name=§6Золотий генератор піску
+tile.sand_gen_lvl3.name=§bАлмазний генератор піску
+tile.sand_gen_lvl4.name=§aСмарагдовий генератор піску
