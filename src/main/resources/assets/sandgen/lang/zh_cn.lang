@@ -1,16 +1,16 @@
-itemGroup.SandGen=SandGen
+itemGroup.SandGen=刷沙机
 
-tile.s1.name=1x 沙子
-tile.s2.name=2x 沙子
-tile.s3.name=3x 沙子
-tile.s4.name=4x 沙子
-tile.s5.name=5x 沙子
-tile.s6.name=6x 沙子
-tile.s7.name=7x 沙子
-tile.s8.name=8x 沙子
-tile.s9.name=9x 沙子
+tile.s1.name=沙子（1x）
+tile.s2.name=沙子（2x）
+tile.s3.name=沙子（3x）
+tile.s4.name=沙子（4x）
+tile.s5.name=沙子（5x）
+tile.s6.name=沙子（6x）
+tile.s7.name=沙子（7x）
+tile.s8.name=沙子（8x）
+tile.s9.name=沙子（9x）
 
-tile.sand_gen_lvl1.name=§7鐵砂產生器
-tile.sand_gen_lvl2.name=§6金沙產生器
-tile.sand_gen_lvl3.name=§b鑽石沙生成器
-tile.sand_gen_lvl4.name=§a翡翠沙生成器
+tile.sand_gen_lvl1.name=§7铁刷沙机
+tile.sand_gen_lvl2.name=§6金刷沙机
+tile.sand_gen_lvl3.name=§b钻石刷沙机
+tile.sand_gen_lvl4.name=§a绿宝石刷沙机
