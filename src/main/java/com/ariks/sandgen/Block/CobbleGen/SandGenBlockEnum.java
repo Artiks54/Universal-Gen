@@ -1,6 +1,6 @@
 package com.ariks.sandgen.Block.CobbleGen;
 
-import com.ariks.sandgen.util.Config;
+import com.ariks.sandgen.Util.Config;
 
 public enum SandGenBlockEnum {
     lvl_1(Config.count_1, Config.speed_1),

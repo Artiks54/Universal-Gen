@@ -1,7 +1,7 @@
 package com.ariks.sandgen.proxy;
 
 
-import com.ariks.sandgen.util.RegistryBlock;
+import com.ariks.sandgen.Register.RegistryBlock;
 
 public class ClientProxy extends CommonProxy {
     @Override

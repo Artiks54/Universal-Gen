@@ -1,4 +1,4 @@
-package com.ariks.sandgen.util;
+package com.ariks.sandgen.Register;
 
 import com.ariks.sandgen.Block.CobbleGen.TileGen;
 import com.ariks.sandgen.SandGen;

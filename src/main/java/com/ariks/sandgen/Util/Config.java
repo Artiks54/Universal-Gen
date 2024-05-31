@@ -1,4 +1,4 @@
-package com.ariks.sandgen.util;
+package com.ariks.sandgen.Util;
 
 import com.ariks.sandgen.SandGen;
 import net.minecraftforge.common.config.Configuration;

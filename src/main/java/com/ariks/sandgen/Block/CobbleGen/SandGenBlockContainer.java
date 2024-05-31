@@ -14,8 +14,10 @@ public class SandGenBlockContainer extends Container {
     private final TileGen tileEntity;
     private int progress;
     private int speed;
+    private int mode;
     public SandGenBlockContainer(InventoryPlayer playerInventory, TileGen tileEntity, EntityPlayer player) {
         this.tileEntity = tileEntity;
+        tileEntity.openInventory(player);
         this.addSlotToContainer(new Slot(tileEntity, 0, 80, 35) {
             @Override
             public boolean isItemValid(@NotNull ItemStack stack) {
@@ -31,42 +33,28 @@ public class SandGenBlockContainer extends Container {
             this.addSlotToContainer(new Slot(playerInventory, k, 8 + k * 18, 142));
         }
     }
-    @Override
-    public @NotNull ItemStack transferStackInSlot(@NotNull EntityPlayer player, int slotIndex) {
+    public @NotNull ItemStack transferStackInSlot(@NotNull EntityPlayer playerIn, int index)
+    {
         ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.inventorySlots.get(slotIndex);
+        Slot slot = this.inventorySlots.get(index);
         if (slot != null && slot.getHasStack()) {
-            ItemStack slotStack = slot.getStack();
-            itemstack = slotStack.copy();
-            if (slotIndex == 0) {
-                if (!this.mergeItemStack(slotStack, 1, 37, false)) {
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
+            if (index < this.tileEntity.getSizeInventory()) {
+                if (!this.mergeItemStack(itemstack1, this.tileEntity.getSizeInventory(), this.inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
-                slot.onSlotChange(slotStack, itemstack);
-            } else {
-                if (slotIndex < 28) {
-                    if (!this.mergeItemStack(slotStack, 28, 37, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (slotIndex < 37) {
-                    if (!this.mergeItemStack(slotStack, 1, 28, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                }
+            } else if (!this.mergeItemStack(itemstack1, 0, this.tileEntity.getSizeInventory(), false)) {
+                return ItemStack.EMPTY;
             }
-            if (slotStack.isEmpty()) {
+            if (itemstack1.isEmpty()) {
                 slot.putStack(ItemStack.EMPTY);
             } else {
                 slot.onSlotChanged();
             }
-            if (slotStack.getCount() == itemstack.getCount()) {
-                return ItemStack.EMPTY;
-            }
-            slot.onTake(player, slotStack);
         }
         return itemstack;
     }
-    @Override
     public void addListener(@NotNull IContainerListener listener) {
         super.addListener(listener);
         listener.sendAllWindowProperties(this, this.tileEntity);
@@ -74,20 +62,20 @@ public class SandGenBlockContainer extends Container {
     @Override
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
-        int newProgress = this.tileEntity.getField(1);
-        int newSpeed = this.tileEntity.getField(2);
-        if (this.progress != newProgress) {
-            for (IContainerListener listener : this.listeners) {
-                listener.sendWindowProperty(this, 1, newProgress);
+        for (IContainerListener icontainerlistener : this.listeners) {
+            if (this.progress != this.tileEntity.getField(1)) {
+                icontainerlistener.sendWindowProperty(this, 1, this.tileEntity.getField(1));
             }
-            this.progress = newProgress;
-        }
-        if (this.speed != newSpeed) {
-            for (IContainerListener listener : this.listeners) {
-                listener.sendWindowProperty(this, 2, newSpeed);
+            if (this.speed != this.tileEntity.getField(2)) {
+                icontainerlistener.sendWindowProperty(this, 2, this.tileEntity.getField(2));
             }
-            this.speed = newSpeed;
+            if (this.mode != this.tileEntity.getField(3)) {
+                icontainerlistener.sendWindowProperty(this, 3, this.tileEntity.getField(3));
+            }
         }
+        this.progress = this.tileEntity.getField(1);
+        this.speed = this.tileEntity.getField(2);
+        this.mode = this.tileEntity.getField(3);
     }
     @Override
     @SideOnly(Side.CLIENT)

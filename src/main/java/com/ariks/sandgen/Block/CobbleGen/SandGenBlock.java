@@ -1,6 +1,6 @@
 package com.ariks.sandgen.Block.CobbleGen;
 
-import com.ariks.sandgen.util.Config;
+import com.ariks.sandgen.Util.Config;
 import com.ariks.sandgen.SandGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

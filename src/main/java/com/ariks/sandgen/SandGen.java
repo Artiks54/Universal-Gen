@@ -1,8 +1,8 @@
 package com.ariks.sandgen;
 
 import com.ariks.sandgen.proxy.CommonProxy;
-import com.ariks.sandgen.util.Config;
-import com.ariks.sandgen.util.RegistryBlock;
+import com.ariks.sandgen.Util.Config;
+import com.ariks.sandgen.Register.RegistryBlock;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
@@ -20,7 +20,7 @@ public class SandGen {
     public static File config;
     public static final String MOD_ID = "sandgen";
     public static final String MOD_NAME = "Sand Gen";
-    public static final String VERSION = "1.1";
+    public static final String VERSION = "1.3";
     public static Logger logger;
     @Mod.Instance(SandGen.MOD_ID)
     public static SandGen instance;

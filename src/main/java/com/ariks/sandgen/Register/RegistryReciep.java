@@ -1,4 +1,4 @@
-package com.ariks.sandgen.util;
+package com.ariks.sandgen.Register;
 
 import com.ariks.sandgen.SandGen;
 import net.minecraft.block.Block;
@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import static com.ariks.sandgen.util.RegistryBlock.*;
+import static com.ariks.sandgen.Register.RegistryBlock.*;
 public class RegistryReciep {
     public static void preInit() {
         String[] Level = {"1","2","3","4","5","6","7","8","9"};

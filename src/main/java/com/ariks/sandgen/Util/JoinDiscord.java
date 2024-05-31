@@ -1,4 +1,4 @@
-package com.ariks.sandgen.util;
+package com.ariks.sandgen.Util;
 
 import com.ariks.sandgen.SandGen;
 import net.minecraft.util.text.TextComponentString;
@@ -7,10 +7,11 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import org.jetbrains.annotations.NotNull;
 
 public class JoinDiscord {
     @SubscribeEvent
-    public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+    public void onPlayerLogin(PlayerEvent.@NotNull PlayerLoggedInEvent event) {
         TextComponentString hello = new TextComponentString("Hello "+event.player.getName());
         hello.getStyle().setColor(TextFormatting.GREEN);
         event.player.sendMessage(hello);

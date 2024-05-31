@@ -1,6 +1,7 @@
 package com.ariks.sandgen.Block.CobbleGen;
 
 import com.ariks.sandgen.SandGen;
+import com.ariks.sandgen.Util.GuiButtonNetwork;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -9,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 
 public class SandGenGui extends GuiContainer {
     private final TileGen tileGen;
+    private GuiButtonNetwork buttonToogleMode;
     private final ResourceLocation texture = new ResourceLocation(SandGen.MOD_ID, "textures/gui/gui.png");
     public SandGenGui(InventoryPlayer inventory, TileGen tileEntity, EntityPlayer player) {
         super(new SandGenBlockContainer(inventory,tileEntity,player));
@@ -18,14 +20,32 @@ public class SandGenGui extends GuiContainer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
-        this.renderHoveredToolTip(mouseX,mouseY);
+        this.renderHoveredToolTip(mouseX, mouseY);
+        if (buttonToogleMode.isMouseOver()) {
+            if (tileGen.getField(3) == 0) {
+                drawHoveringText("Generates to this inventory",mouseX,mouseY);
+            }
+            if (tileGen.getField(3) == 1) {
+                drawHoveringText("Generates to the neighboring inventory",mouseX,mouseY);
+            }
+        }
+    }
+    private void DrawButton(){
+        int x = (this.width - xSize) / 2;
+        int y = (this.height - ySize) / 2;
+        int fix = 1;
+        buttonList.clear();
+        buttonToogleMode = new GuiButtonNetwork(tileGen, 1, x + 75, y + 58, 25+fix, 13+fix, "", 1);
+        buttonToogleMode.setIdTexture(tileGen.getField(3));
+        buttonList.add(buttonToogleMode);
     }
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.getTextureManager().bindTexture(texture);
+        this.DrawButton();
         int x = (this.width - xSize) / 2;
         int y = (this.height - ySize) / 2;
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        this.mc.getTextureManager().bindTexture(texture);
         drawTexturedModalRect(x, y, 0, 0, xSize,ySize);
         int progress = tileGen.getField(1);
         int maxProgress = tileGen.getField(2);

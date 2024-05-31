@@ -2,7 +2,7 @@
 
 
 ![Version](https://img.shields.io/badge/VERSION-red.svg?style=for-the-badge)
-![ver](https://img.shields.io/badge/1.2-red.svg?style=for-the-badge)
+![ver](https://img.shields.io/badge/1.3-red.svg?style=for-the-badge)
 
 [![CurseForge name](https://cf.way2muchnoise.eu/title/1027110.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/sand-gen)
 [![CurseForge name](https://cf.way2muchnoise.eu/sand-gen.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/sand-gen)
