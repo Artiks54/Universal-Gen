@@ -15,4 +15,4 @@
 [![Online](https://img.shields.io/discord/1205154996073660477?style=for-the-badge)](https://discord.gg/Mp5sEpE3B3)
 
 # Websites download mod
-## https://www.curseforge.com/minecraft/mc-mods/cobblestone-gen
+## https://www.curseforge.com/minecraft/mc-mods/sand-gen
