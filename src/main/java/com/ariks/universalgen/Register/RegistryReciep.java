@@ -14,11 +14,11 @@ import static com.ariks.universalgen.Register.RegistryBlock.*;
 public class RegistryReciep {
     public static void preInit() {
         //COBBLE_STONE
-        String[] Cobble_CLevel = {"1C","2C","3C","4C","5C","6C","7C","8C","9C"};
-        Block[] Cobble_CBlockInput = {Blocks.COBBLESTONE,C1,C2,C3,C4,C5,C6,C7,C8};
-        Block[] Cobble_CBlockOutput = {C1,C2,C3,C4,C5,C6,C7,C8,C9};
-        Block[] Cobble_CBlockInputRevers = {C9,C8,C7,C6,C5,C4,C3,C2,C1};
-        Block[] Cobble_CBlockOutputRevers = {C8,C7,C6,C5,C4,C3,C2,C1,Blocks.COBBLESTONE};
+        String[] Cobble_CLevel = {"1C", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C"};
+        Block[] Cobble_CBlockInput = {Blocks.COBBLESTONE, C1, C2, C3, C4, C5, C6, C7, C8};
+        Block[] Cobble_CBlockOutput = {C1, C2, C3, C4, C5, C6, C7, C8, C9};
+        Block[] Cobble_CBlockInputRevers = {C9, C8, C7, C6, C5, C4, C3, C2, C1};
+        Block[] Cobble_CBlockOutputRevers = {C8, C7, C6, C5, C4, C3, C2, C1, Blocks.COBBLESTONE};
         for (int i = 0; i < Cobble_CLevel.length; i++) {
             String level = Cobble_CLevel[i];
             Block input = Cobble_CBlockInput[i];
@@ -43,14 +43,12 @@ public class RegistryReciep {
                     Ingredient.fromItems(Item.getItemFromBlock(input))
             );
         }
-
-
         //Sand
-        String[] Sand_CLevel = {"1S","2S","3S","4S","5S","6S","7S","8S","9S"};
-        Block[] Sand_CBlockInput = {Blocks.SAND,S1,S2,S3,S4,S5,S6,S7,S8};
-        Block[] Sand_CBlockOutput = {S1,S2,S3,S4,S5,S6,S7,S8,S9};
-        Block[] Sand_CBlockInputRevers = {S9,S8,S7,S6,S5,S4,S3,S2,S1};
-        Block[] Sand_CBlockOutputRevers = {S8,S7,S6,S5,S4,S3,S2,S1,Blocks.SAND};
+        String[] Sand_CLevel = {"1S", "2S", "3S", "4S", "5S", "6S", "7S", "8S", "9S"};
+        Block[] Sand_CBlockInput = {Blocks.SAND, S1, S2, S3, S4, S5, S6, S7, S8};
+        Block[] Sand_CBlockOutput = {S1, S2, S3, S4, S5, S6, S7, S8, S9};
+        Block[] Sand_CBlockInputRevers = {S9, S8, S7, S6, S5, S4, S3, S2, S1};
+        Block[] Sand_CBlockOutputRevers = {S8, S7, S6, S5, S4, S3, S2, S1, Blocks.SAND};
         for (int i = 0; i < Sand_CLevel.length; i++) {
             String level = Sand_CLevel[i];
             Block input = Sand_CBlockInput[i];
@@ -119,10 +117,21 @@ public class RegistryReciep {
                 'W', new ItemStack(SandGenLvl3),
                 'P', new ItemStack(Blocks.EMERALD_BLOCK),
                 'L', new ItemStack(SandGenLvl3));
+        //SandGen_lvl5
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Sand_gen_lvl_5"), null,
+                new ItemStack(SandGenLvl5),
+                "CDC",
+                "NGN",
+                "CDC",
+                'C', new ItemStack(S4),
+                'D', new ItemStack(Blocks.DRAGON_EGG),
+                'N', new ItemStack(Items.NETHER_STAR),
+                'G', new ItemStack(SandGenLvl4));
         //CobbleGen_Lvl_1
         GameRegistry.addShapedRecipe(
                 new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_1"), null,
-                new ItemStack(RegistryBlock.CobbleGenLvl1),
+                new ItemStack(CobbleGenLvl1),
                 "CCC",
                 "WPL",
                 "CCC",
@@ -133,35 +142,86 @@ public class RegistryReciep {
         //CobbleGen_Lvl_2
         GameRegistry.addShapedRecipe(
                 new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_2"), null,
-                new ItemStack(RegistryBlock.CobbleGenLvl2),
+                new ItemStack(CobbleGenLvl2),
                 "CCC",
                 "WPL",
                 "CCC",
                 'C', new ItemStack(C1),
-                'W', new ItemStack(RegistryBlock.CobbleGenLvl1),
+                'W', new ItemStack(CobbleGenLvl1),
                 'P', new ItemStack(Blocks.GOLD_BLOCK),
-                'L', new ItemStack(RegistryBlock.CobbleGenLvl1));
+                'L', new ItemStack(CobbleGenLvl1));
         //CobbleGen_Lvl_3
         GameRegistry.addShapedRecipe(
                 new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_3"), null,
-                new ItemStack(RegistryBlock.CobbleGenLvl3),
+                new ItemStack(CobbleGenLvl3),
                 "CCC",
                 "WPL",
                 "CCC",
                 'C', new ItemStack(C2),
-                'W', new ItemStack(RegistryBlock.CobbleGenLvl2),
+                'W', new ItemStack(CobbleGenLvl2),
                 'P', new ItemStack(Blocks.DIAMOND_BLOCK),
-                'L', new ItemStack(RegistryBlock.CobbleGenLvl2));
+                'L', new ItemStack(CobbleGenLvl2));
         //CobbleGen_Lvl_4
         GameRegistry.addShapedRecipe(
                 new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_4"), null,
-                new ItemStack(RegistryBlock.CobbleGenLvl4),
+                new ItemStack(CobbleGenLvl4),
                 "CCC",
                 "WPL",
                 "CCC",
                 'C', new ItemStack(C3),
-                'W', new ItemStack(RegistryBlock.CobbleGenLvl3),
+                'W', new ItemStack(CobbleGenLvl3),
                 'P', new ItemStack(Blocks.EMERALD_BLOCK),
-                'L', new ItemStack(RegistryBlock.CobbleGenLvl3));
+                'L', new ItemStack(CobbleGenLvl3));
+        //CobbleGen_Lvl_5
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_5"), null,
+                new ItemStack(CobbleGenLvl5),
+                "CDC",
+                "NGN",
+                "CDC",
+                'C', new ItemStack(C4),
+                'D', new ItemStack(Blocks.DRAGON_EGG),
+                'N', new ItemStack(Items.NETHER_STAR),
+                'G', new ItemStack(CobbleGenLvl4));
+        //Upgrade_Module_1
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Upgrade_Module_1"), null,
+                new ItemStack(RegistryItems.upgrade_lvl1),
+                "SSS",
+                "BCB",
+                "SSS",
+                'S', new ItemStack(Items.IRON_INGOT),
+                'C', new ItemStack(Items.IRON_PICKAXE),
+                'B', new ItemStack(Blocks.PISTON));
+        //Upgrade_Module_2
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Upgrade_Module_2"), null,
+                new ItemStack(RegistryItems.upgrade_lvl2),
+                "SSS",
+                "BCB",
+                "SSS",
+                'S', new ItemStack(Items.GOLD_INGOT),
+                'C', new ItemStack(Items.GOLDEN_PICKAXE),
+                'B', new ItemStack(RegistryItems.upgrade_lvl1));
+        //Upgrade_Module_3
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Upgrade_Module_3"), null,
+                new ItemStack(RegistryItems.upgrade_lvl3),
+                "SSS",
+                "BCB",
+                "SSS",
+                'S', new ItemStack(Items.DIAMOND),
+                'C', new ItemStack(Items.DIAMOND_PICKAXE),
+                'B', new ItemStack(RegistryItems.upgrade_lvl2));
+        //Upgrade_Module_4
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Upgrade_Module_4"), null,
+                new ItemStack(RegistryItems.upgrade_lvl4),
+                "SSS",
+                "BCB",
+                "SSS",
+                'S', new ItemStack(Items.EMERALD),
+                'C', new ItemStack(Items.NETHER_STAR),
+                'B', new ItemStack(RegistryItems.upgrade_lvl3));
     }
 }
