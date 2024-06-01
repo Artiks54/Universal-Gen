@@ -14,8 +14,8 @@ public class Config {
     private final static String TextS = "The speed in ticks to generate";
     private final static String TextC = "Number of items";
     public static boolean DebugMod;
-    public static int speed_1,speed_2,speed_3,speed_4;
-    public static int count_1,count_2,count_3,count_4;
+    public static int speed_1,speed_2,speed_3,speed_4,speed_5;
+    public static int count_1,count_2,count_3,count_4,count_5;
     public static void init(File file) {
         config = new Configuration(file);
         try {config.load();
@@ -42,6 +42,10 @@ public class Config {
             TileName = "Sand_generator_lvl4";
             speed_4 = config.getInt(TileName+speed,Tile,20,1,Short.MAX_VALUE,TextS);
             count_4 = config.getInt(TileName+count,Tile,64,1,64,TextC);
+//lvl_5
+            TileName = "Sand_generator_lvl5";
+            speed_5 = config.getInt(TileName+speed,Tile,5,1,Short.MAX_VALUE,TextS);
+            count_5 = config.getInt(TileName+count,Tile,64,1,64,TextC);
 
         } finally {
             if(config.hasChanged()) config.save();

@@ -21,6 +21,7 @@ public class RegistryBlock {
     public static Block SandGenLvl2 = new SandGenBlock("sand_gen_lvl2", SandGenBlockEnum.lvl_2);
     public static Block SandGenLvl3 = new SandGenBlock("sand_gen_lvl3", SandGenBlockEnum.lvl_3);
     public static Block SandGenLvl4 = new SandGenBlock("sand_gen_lvl4", SandGenBlockEnum.lvl_4);
+    public static Block SandGenLvl5 = new SandGenBlock("sand_gen_lvl5", SandGenBlockEnum.lvl_5);
     public static Block S1  = new CompressedSandBlock("s1","9 blocks");
     public static Block S2  = new CompressedSandBlock("s2","81 blocks");
     public static Block S3  = new CompressedSandBlock("s3","729 blocks");

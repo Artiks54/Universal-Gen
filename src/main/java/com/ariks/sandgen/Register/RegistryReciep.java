@@ -43,7 +43,7 @@ public class RegistryReciep {
                     Ingredient.fromItems(Item.getItemFromBlock(input))
             );
         }
-        //CobbleGen_Lvl_1
+        //SandGen_lvl1
         GameRegistry.addShapedRecipe(
                 new ResourceLocation(SandGen.MOD_ID + ":" + "Sand_gen_lvl_1"), null,
                 new ItemStack(SandGenLvl1),
@@ -54,7 +54,7 @@ public class RegistryReciep {
                 'W', new ItemStack(Items.WATER_BUCKET),
                 'P', new ItemStack(Blocks.IRON_BLOCK),
                 'L', new ItemStack(Items.LAVA_BUCKET));
-        //CobbleGen_Lvl_2
+        //SandGen_lvl2
         GameRegistry.addShapedRecipe(
                 new ResourceLocation(SandGen.MOD_ID + ":" + "Sand_gen_lvl_2"), null,
                 new ItemStack(SandGenLvl2),
@@ -65,7 +65,7 @@ public class RegistryReciep {
                 'W', new ItemStack(SandGenLvl1),
                 'P', new ItemStack(Blocks.GOLD_BLOCK),
                 'L', new ItemStack(SandGenLvl1));
-        //CobbleGen_Lvl_3
+        //SandGen_lvl3
         GameRegistry.addShapedRecipe(
                 new ResourceLocation(SandGen.MOD_ID + ":" + "Sand_gen_lvl_3"), null,
                 new ItemStack(SandGenLvl3),
@@ -76,7 +76,7 @@ public class RegistryReciep {
                 'W', new ItemStack(SandGenLvl2),
                 'P', new ItemStack(Blocks.DIAMOND_BLOCK),
                 'L', new ItemStack(SandGenLvl2));
-        //CobbleGen_Lvl_4
+        //SandGen_lvl4
         GameRegistry.addShapedRecipe(
                 new ResourceLocation(SandGen.MOD_ID + ":" + "Sand_gen_lvl_4"), null,
                 new ItemStack(SandGenLvl4),
@@ -87,5 +87,16 @@ public class RegistryReciep {
                 'W', new ItemStack(SandGenLvl3),
                 'P', new ItemStack(Blocks.EMERALD_BLOCK),
                 'L', new ItemStack(SandGenLvl3));
+        //SandGen_lvl5
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(SandGen.MOD_ID + ":" + "Sand_gen_lvl_5"), null,
+                new ItemStack(SandGenLvl5),
+                "CDC",
+                "NGN",
+                "CDC",
+                'C', new ItemStack(S4),
+                'D', new ItemStack(Blocks.DRAGON_EGG),
+                'N', new ItemStack(Items.NETHER_STAR),
+                'G', new ItemStack(SandGenLvl4));
     }
 }
