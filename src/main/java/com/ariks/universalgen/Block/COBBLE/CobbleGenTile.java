@@ -21,7 +21,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import org.jetbrains.annotations.NotNull;
-
 import javax.annotation.Nonnull;
 
 public class CobbleGenTile extends TileEntityLockable  implements ITickable {

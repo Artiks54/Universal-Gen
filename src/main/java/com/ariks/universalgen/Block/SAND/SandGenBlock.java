@@ -1,6 +1,5 @@
 package com.ariks.universalgen.Block.SAND;
 
-import com.ariks.universalgen.Block.COBBLE.CobbleGenTile;
 import com.ariks.universalgen.UniversalGen;
 import com.ariks.universalgen.Util.Config;
 import net.minecraft.block.Block;
@@ -40,8 +39,8 @@ public class SandGenBlock extends Block {
     @Override
     public boolean onBlockActivated(@NotNull World worldIn, @NotNull BlockPos pos, @NotNull IBlockState state, @NotNull EntityPlayer playerIn, @NotNull EnumHand hand, @NotNull EnumFacing facing, float hitX, float hitY, float hitZ) {
         TileEntity tile = worldIn.getTileEntity(pos);
-        if (!worldIn.isRemote && tile instanceof CobbleGenTile) {
-            int id = Integer.parseInt(((CobbleGenTile) tile).getGuiID());
+        if (!worldIn.isRemote && tile instanceof SandGenTile) {
+            int id = Integer.parseInt(((SandGenTile) tile).getGuiID());
             playerIn.openGui(UniversalGen.instance, id, worldIn, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
@@ -57,7 +56,7 @@ public class SandGenBlock extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(@NotNull World world, @NotNull IBlockState state) {
-        CobbleGenTile tileEntity = new CobbleGenTile();
+        SandGenTile tileEntity = new SandGenTile();
         tileEntity.count = tileType.getCount();
         return tileEntity;
     }
