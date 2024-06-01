@@ -11,7 +11,8 @@ public class Config {
     private final static String count = "_count";
     private final static String TextC = "Number of items";
     public static boolean DebugMod,IntegrationTheOneProbeTA,BooleanHelloMsg;
-    public static int count_1,count_2,count_3,count_4,count_5;
+    public static int Scount_1,Scount_2,Scount_3,Scount_4,Scount_5;
+    public static int Ccount_1,Ccount_2,Ccount_3,Ccount_4,Ccount_5;
     public static void init(File file) {
         config = new Configuration(file);
         try {config.load();
@@ -25,19 +26,34 @@ public class Config {
             IntegrationTheOneProbeTA = config.getBoolean("integration_top_addons",General,true,"Integration TheOneProbe-TopAddons");
 //lvl_1
             TileName = "Sand_generator_lvl1";
-            count_1 = config.getInt(TileName+count,Tile,1,1,64,TextC);
+            Scount_1 = config.getInt(TileName+count,Tile,1,1,64,TextC);
 //lvl_2
             TileName = "Sand_generator_lvl2";
-            count_2 = config.getInt(TileName+count,Tile,4,1,64,TextC);
+            Scount_2 = config.getInt(TileName+count,Tile,4,1,64,TextC);
 //lvl_3
             TileName = "Sand_generator_lvl3";
-            count_3 = config.getInt(TileName+count,Tile,16,1,64,TextC);
+            Scount_3 = config.getInt(TileName+count,Tile,16,1,64,TextC);
 //lvl_4
             TileName = "Sand_generator_lvl4";
-            count_4 = config.getInt(TileName+count,Tile,32,1,64,TextC);
+            Scount_4 = config.getInt(TileName+count,Tile,32,1,64,TextC);
 //lvl_5
             TileName = "Sand_generator_lvl5";
-            count_5 = config.getInt(TileName+count,Tile,64,1,64,TextC);
+            Scount_5 = config.getInt(TileName+count,Tile,64,1,64,TextC);
+//lvl_1
+            TileName = "Cobble_generator_lvl1";
+            Ccount_1 = config.getInt(TileName+count,Tile,1,1,64,TextC);
+//lvl_2
+            TileName = "Cobble_generator_lvl2";
+            Ccount_2 = config.getInt(TileName+count,Tile,4,1,64,TextC);
+//lvl_3
+            TileName = "Cobble_generator_lvl3";
+            Ccount_3 = config.getInt(TileName+count,Tile,16,1,64,TextC);
+//lvl_4
+            TileName = "Cobble_generator_lvl4";
+            Ccount_4 = config.getInt(TileName+count,Tile,32,1,64,TextC);
+//lvl_5
+            TileName = "Cobble_generator_lvl5";
+            Ccount_5 = config.getInt(TileName+count,Tile,64,1,64,TextC);
         } finally {
             if(config.hasChanged()) config.save();
         }

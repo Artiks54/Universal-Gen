@@ -1,6 +1,7 @@
 package com.ariks.universalgen.Network;
 
-import com.ariks.universalgen.Block.SandGen.TileGen;
+import com.ariks.universalgen.Block.COBBLE.CobbleGenTile;
+import com.ariks.universalgen.Block.SAND.SandGenTile;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -35,10 +36,19 @@ public class UpdateTilePacket implements IMessage {
             world.addScheduledTask(() -> {
                 if (world.isBlockLoaded(pos)) {
                     TileEntity tile = world.getTileEntity(pos);
-                    if(tile instanceof TileGen) {
-                        TileGen TileGen = (TileGen) tile;
+                    if(tile instanceof SandGenTile) {
+                        SandGenTile SandGenTile = (SandGenTile) tile;
                         if (message.value == 1) {
-                            TileGen.ToogleMode();
+                            SandGenTile.ToogleMode();
+                        }
+                    }
+                }
+                if (world.isBlockLoaded(pos)) {
+                    TileEntity tile = world.getTileEntity(pos);
+                    if(tile instanceof CobbleGenTile) {
+                        CobbleGenTile CobbleGenTile = (CobbleGenTile) tile;
+                        if (message.value == 1) {
+                            CobbleGenTile.ToogleMode();
                         }
                     }
                 }

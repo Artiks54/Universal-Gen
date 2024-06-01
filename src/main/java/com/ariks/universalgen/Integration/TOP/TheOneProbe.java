@@ -1,6 +1,7 @@
 package com.ariks.universalgen.Integration.TOP;
 
-import com.ariks.universalgen.Block.SandGen.TileGen;
+import com.ariks.universalgen.Block.COBBLE.CobbleGenTile;
+import com.ariks.universalgen.Block.SAND.SandGenTile;
 import com.ariks.universalgen.UniversalGen;
 import com.ariks.universalgen.Util.Config;
 import io.github.drmanganese.topaddons.addons.AddonBlank;
@@ -21,17 +22,29 @@ public class TheOneProbe extends AddonBlank {
     public void addProbeInfo(ProbeMode probeMode, IProbeInfo iProbeInfo, EntityPlayer entityPlayer, World world, IBlockState iBlockState, IProbeHitData iProbeHitData) {
         TileEntity tile = world.getTileEntity(iProbeHitData.getPos());
         if(Config.IntegrationTheOneProbeTA) {
-            if (tile instanceof TileGen) {
-                TileGen tileGen = (TileGen) tile;
-                if (tileGen.getField(3) == 0) {
+            if (tile instanceof SandGenTile) {
+                SandGenTile sandGenTile = (SandGenTile) tile;
+                if (sandGenTile.getField(3) == 0) {
                     iProbeInfo.text("Mode: in");
                 }
-                if (tileGen.getField(3) == 1) {
+                if (sandGenTile.getField(3) == 1) {
                     iProbeInfo.text("Mode: out");
                 }
-                int percent = ((tileGen.getField(1) * 100) / tileGen.getField(2));
+                int percent = ((sandGenTile.getField(1) * 100) / sandGenTile.getField(2));
                 iProbeInfo.progress(percent, 100);
-                iProbeInfo.item(new ItemStack(Blocks.SAND, ((TileGen) tile).getStackInSlot(0).getCount()));
+                iProbeInfo.item(new ItemStack(Blocks.SAND, ((SandGenTile) tile).getStackInSlot(0).getCount()));
+            }
+            if (tile instanceof CobbleGenTile) {
+                CobbleGenTile CobbleGenTile = (CobbleGenTile) tile;
+                if (CobbleGenTile.getField(3) == 0) {
+                    iProbeInfo.text("Mode: in");
+                }
+                if (CobbleGenTile.getField(3) == 1) {
+                    iProbeInfo.text("Mode: out");
+                }
+                int percent = ((CobbleGenTile.getField(1) * 100) / CobbleGenTile.getField(2));
+                iProbeInfo.progress(percent, 100);
+                iProbeInfo.item(new ItemStack(Blocks.COBBLESTONE, ((CobbleGenTile) tile).getStackInSlot(0).getCount()));
             }
         }
     }

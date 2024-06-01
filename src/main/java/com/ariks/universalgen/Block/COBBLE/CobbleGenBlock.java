@@ -1,7 +1,7 @@
-package com.ariks.universalgen.Block.SandGen;
+package com.ariks.universalgen.Block.COBBLE;
 
-import com.ariks.universalgen.Util.Config;
 import com.ariks.universalgen.UniversalGen;
+import com.ariks.universalgen.Util.Config;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -23,24 +23,24 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
-public class SandGenBlock extends Block {
-    private final SandGenBlockEnum tileType;
-    public SandGenBlock(String name, SandGenBlockEnum tileType) {
+public class CobbleGenBlock extends Block {
+    private final CobbleGenBlockEnum tileType;
+    public CobbleGenBlock(String name, CobbleGenBlockEnum tileType) {
         super(Material.IRON);
         this.setRegistryName(name);
         this.tileType = tileType;
         this.setUnlocalizedName(name);
         this.setCreativeTab(UniversalGen.UniversalGenTab);
-        this.setHardness(1.5F);
-        this.setResistance(2.5f);
+        this.setHardness(2.5F);
+        this.setResistance(3.5f);
         this.setSoundType(SoundType.METAL);
         this.setHarvestLevel("pickaxe", 1);
     }
     @Override
     public boolean onBlockActivated(@NotNull World worldIn, @NotNull BlockPos pos, @NotNull IBlockState state, @NotNull EntityPlayer playerIn, @NotNull EnumHand hand, @NotNull EnumFacing facing, float hitX, float hitY, float hitZ) {
         TileEntity tile = worldIn.getTileEntity(pos);
-        if (!worldIn.isRemote && tile instanceof TileGen) {
-            int id = Integer.parseInt(((TileGen) tile).getGuiID());
+        if (!worldIn.isRemote && tile instanceof CobbleGenTile) {
+            int id = Integer.parseInt(((CobbleGenTile) tile).getGuiID());
             playerIn.openGui(UniversalGen.instance, id, worldIn, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
@@ -56,7 +56,7 @@ public class SandGenBlock extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(@NotNull World world, @NotNull IBlockState state) {
-        TileGen tileEntity = new TileGen();
+        CobbleGenTile tileEntity = new CobbleGenTile();
         tileEntity.count = tileType.getCount();
         return tileEntity;
     }
@@ -72,14 +72,14 @@ public class SandGenBlock extends Block {
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
         if (Config.DebugMod && !worldIn.isRemote) {
             UniversalGen.logger.info(
-                    "SandGen-log: Block place: " + getUnlocalizedName() + " Cord: " + pos.getX() + "," + pos.getY() + "," + pos.getZ() + " DismID: " + worldIn.provider.getDimension() + " PlayerName: " + placer.getName());
+                    "UniversalGen-log: Block place: " + getLocalizedName() + " Cord: " + pos.getX() + "," + pos.getY() + "," + pos.getZ() + " DismID: " + worldIn.provider.getDimension() + " PlayerName: " + placer.getName());
         }
     }
-    @Override
+    @Deprecated
     public @NotNull AxisAlignedBB getBoundingBox(@NotNull IBlockState state, @NotNull IBlockAccess source, @NotNull BlockPos pos) {
         return new AxisAlignedBB(0.062, 0, 0.062, 0.938, 0.875, 0.938);
     }
-    @Override
+    @Deprecated
     public boolean isOpaqueCube(@NotNull IBlockState state) {
         return false;
     }
@@ -87,7 +87,7 @@ public class SandGenBlock extends Block {
     public boolean isNormalCube(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos) {
         return false;
     }
-    @Override
+    @Deprecated
     public boolean isFullCube(@NotNull IBlockState state) {
         return false;
     }

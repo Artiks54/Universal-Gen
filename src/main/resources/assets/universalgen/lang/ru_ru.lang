@@ -1,18 +1,45 @@
 //Localized by artiks4471
 
-itemGroup.universalgen=Universal generator
+itemGroup.universalgen=Универсальные генераторы
 
-tile.s1.name=1x Песок
-tile.s2.name=2x Песок
-tile.s3.name=3x Песок
-tile.s4.name=4x Песок
-tile.s5.name=5x Песок
-tile.s6.name=6x Песок
-tile.s7.name=7x Песок
-tile.s8.name=8x Песок
-tile.s9.name=9x Песок
+# Сжатый песок
+tile.s1.name=Сжатый песок 1x
+tile.s2.name=Сжатый песок 2x
+tile.s3.name=Сжатый песок 3x
+tile.s4.name=Сжатый песок 4x
+tile.s5.name=Сжатый песок 5x
+tile.s6.name=Сжатый песок 6x
+tile.s7.name=Сжатый песок 7x
+tile.s8.name=Сжатый песок 8x
+tile.s9.name=Сжатый песок 9x
 
+# Сжатый булыжник
+tile.c1.name=Сжатый булыжник 1x
+tile.c2.name=Сжатый булыжник 2x
+tile.c3.name=Сжатый булыжник 3x
+tile.c4.name=Сжатый булыжник 4x
+tile.c5.name=Сжатый булыжник 5x
+tile.c6.name=Сжатый булыжник 6x
+tile.c7.name=Сжатый булыжник 7x
+tile.c8.name=Сжатый булыжник 8x
+tile.c9.name=Сжатый булыжник 9x
+
+//Генератор песка
 tile.sand_gen_lvl1.name=§7Железный генератор песка
 tile.sand_gen_lvl2.name=§6Золотой генератор песка
 tile.sand_gen_lvl3.name=§bАлмазный генератор песка
 tile.sand_gen_lvl4.name=§aИзумрудный генератор песка
+tile.sand_gen_lvl5.name=§5Драконнмй генератор песка
+
+//Генератор булыжника
+tile.cobble_gen_lvl1.name=§7Железный генератор булыжника
+tile.cobble_gen_lvl2.name=§6Золотой генератор булыжника
+tile.cobble_gen_lvl3.name=§bАлмазный генератор булыжника
+tile.cobble_gen_lvl4.name=§aИзумрудный генератор булыжника
+tile.cobble_gen_lvl5.name=§5Драконнмй генератор булыжника
+
+//Предметы
+item.speed_upgrade_1.name=Железный модуль ускорения
+item.speed_upgrade_2.name=Золотой модуль ускорения
+item.speed_upgrade_3.name=Алмазный модуль ускорения
+item.speed_upgrade_4.name=Изумрудный модуль ускорения

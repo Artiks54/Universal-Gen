@@ -2,17 +2,44 @@
 
 itemGroup.universalgen=Universal generator
 
-tile.s1.name=1x sand
-tile.s2.name=2x sand
-tile.s3.name=3x sand
-tile.s4.name=4x sand
-tile.s5.name=5x sand
-tile.s6.name=6x sand
-tile.s7.name=7x sand
-tile.s8.name=8x sand
-tile.s9.name=9x sand
+//Compressed Sand
+tile.s1.name=Compressed Sand 1x
+tile.s2.name=Compressed Sand 2x
+tile.s3.name=Compressed Sand 3x
+tile.s4.name=Compressed Sand 4x
+tile.s5.name=Compressed Sand 5x
+tile.s6.name=Compressed Sand 6x
+tile.s7.name=Compressed Sand 7x
+tile.s8.name=Compressed Sand 8x
+tile.s9.name=Compressed Sand 9x
 
+//Compressed Cobblestone
+tile.c1.name=Compressed Cobblestone 1x
+tile.c2.name=Compressed Cobblestone 2x
+tile.c3.name=Compressed Cobblestone 3x
+tile.c4.name=Compressed Cobblestone 4x
+tile.c5.name=Compressed Cobblestone 5x
+tile.c6.name=Compressed Cobblestone 6x
+tile.c7.name=Compressed Cobblestone 7x
+tile.c8.name=Compressed Cobblestone 8x
+tile.c9.name=Compressed Cobblestone 9x
+
+//Tile Sand generator
 tile.sand_gen_lvl1.name=§7Iron sand generator
 tile.sand_gen_lvl2.name=§6Gold sand generator
 tile.sand_gen_lvl3.name=§bDiamond sand generator
 tile.sand_gen_lvl4.name=§aEmerald sand generator
+tile.sand_gen_lvl5.name=§5Dragon sand generator
+
+//Tile Cobblestone generator
+tile.cobble_gen_lvl1.name=§7Iron cobblestone generator
+tile.cobble_gen_lvl2.name=§6Gold cobblestone generator
+tile.cobble_gen_lvl3.name=§bDiamond cobblestone generator
+tile.cobble_gen_lvl4.name=§aEmerald cobblestone generator
+tile.cobble_gen_lvl5.name=§5Dragon cobblestone generator
+
+//Items
+item.speed_upgrade_1.name=Iron acceleration module
+item.speed_upgrade_2.name=Gold acceleration module
+item.speed_upgrade_3.name=Diamond acceleration module
+item.speed_upgrade_4.name=Emerald acceleration module

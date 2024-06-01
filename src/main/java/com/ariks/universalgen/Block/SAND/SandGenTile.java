@@ -1,4 +1,4 @@
-package com.ariks.universalgen.Block.SandGen;
+package com.ariks.universalgen.Block.SAND;
 
 import com.ariks.universalgen.Register.RegistryGui;
 import com.ariks.universalgen.Register.RegistryItems;
@@ -23,7 +23,7 @@ import net.minecraft.util.text.TextComponentString;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 
-public class TileGen extends TileEntityLockable  implements ITickable {
+public class SandGenTile extends TileEntityLockable  implements ITickable {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY);
     public int count,mode;
     private final Block BlockGenerated = Blocks.SAND;
@@ -53,7 +53,7 @@ public class TileGen extends TileEntityLockable  implements ITickable {
         for (EnumFacing facing : EnumFacing.VALUES) {
             BlockPos neighborPos = this.pos.offset(facing);
             TileEntity tileEntity = world.getTileEntity(neighborPos);
-            if(tileEntity instanceof TileGen){
+            if(tileEntity instanceof SandGenTile){
                 break;
             }
             if (tileEntity instanceof IInventory) {

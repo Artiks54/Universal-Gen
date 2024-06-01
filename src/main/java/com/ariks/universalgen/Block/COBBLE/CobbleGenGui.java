@@ -1,4 +1,4 @@
-package com.ariks.universalgen.Block.SandGen;
+package com.ariks.universalgen.Block.COBBLE;
 
 import com.ariks.universalgen.UniversalGen;
 import com.ariks.universalgen.Util.GuiButtonNetwork;
@@ -8,13 +8,13 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
-public class SandGenGui extends GuiContainer {
-    private final TileGen tileGen;
+public class CobbleGenGui extends GuiContainer {
+    private final CobbleGenTile cobbleGenTile;
     private GuiButtonNetwork buttonToogleMode;
     private final ResourceLocation texture = new ResourceLocation(UniversalGen.MOD_ID, "textures/gui/gui.png");
-    public SandGenGui(InventoryPlayer inventory, TileGen tileEntity, EntityPlayer player) {
-        super(new SandGenBlockContainer(inventory,tileEntity,player));
-        this.tileGen = tileEntity;
+    public CobbleGenGui(InventoryPlayer inventory, CobbleGenTile tileEntity, EntityPlayer player) {
+        super(new CobbleGenBlockContainer(inventory,tileEntity,player));
+        this.cobbleGenTile = tileEntity;
     }
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -22,10 +22,10 @@ public class SandGenGui extends GuiContainer {
         super.drawScreen(mouseX, mouseY, partialTicks);
         this.renderHoveredToolTip(mouseX, mouseY);
         if (buttonToogleMode.isMouseOver()) {
-            if (tileGen.getField(3) == 0) {
+            if (cobbleGenTile.getField(3) == 0) {
                 drawHoveringText("Generates to this inventory",mouseX,mouseY);
             }
-            if (tileGen.getField(3) == 1) {
+            if (cobbleGenTile.getField(3) == 1) {
                 drawHoveringText("Generates to the neighboring inventory",mouseX,mouseY);
             }
         }
@@ -35,8 +35,8 @@ public class SandGenGui extends GuiContainer {
         int y = (this.height - ySize) / 2;
         int fix = 1;
         buttonList.clear();
-        buttonToogleMode = new GuiButtonNetwork(tileGen, 1, x + 75, y + 58, 25+fix, 13+fix, "", 1);
-        buttonToogleMode.setIdTexture(tileGen.getField(3));
+        buttonToogleMode = new GuiButtonNetwork(cobbleGenTile, 1, x + 75, y + 58, 25+fix, 13+fix, "", 1);
+        buttonToogleMode.setIdTexture(cobbleGenTile.getField(3));
         buttonList.add(buttonToogleMode);
     }
     @Override
@@ -47,8 +47,8 @@ public class SandGenGui extends GuiContainer {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(texture);
         drawTexturedModalRect(x, y, 0, 0, xSize,ySize);
-        int progress = tileGen.getField(1);
-        int NeedTickToGenerate = tileGen.getField(2);
+        int progress = cobbleGenTile.getField(1);
+        int NeedTickToGenerate = cobbleGenTile.getField(2);
         int fix = 1;
         int wightTexture = 41;
         int heightTexture = 50;

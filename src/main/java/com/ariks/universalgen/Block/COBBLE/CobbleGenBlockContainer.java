@@ -1,22 +1,22 @@
-package com.ariks.universalgen.Block.SandGen;
+package com.ariks.universalgen.Block.COBBLE;
 
 import com.ariks.universalgen.Item.UpgradeItem;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 
-public class SandGenBlockContainer extends Container {
-    private final TileGen tileEntity;
+public class CobbleGenBlockContainer extends Container {
+    private final CobbleGenTile tileEntity;
     private int progress;
     private int NeedTickToGenerate;
     private int mode;
-    public SandGenBlockContainer(InventoryPlayer playerInventory, TileGen tileEntity, EntityPlayer player) {
+    public CobbleGenBlockContainer(InventoryPlayer playerInventory, CobbleGenTile tileEntity, EntityPlayer player) {
         this.tileEntity = tileEntity;
         tileEntity.openInventory(player);
         this.addSlotToContainer(new Slot(tileEntity, 1, 80, 9){
