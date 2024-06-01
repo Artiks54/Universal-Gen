@@ -1,0 +1,18 @@
+//Localized by artiks4471
+
+itemGroup.universalgen=Universal generator
+
+tile.s1.name=1x sand
+tile.s2.name=2x sand
+tile.s3.name=3x sand
+tile.s4.name=4x sand
+tile.s5.name=5x sand
+tile.s6.name=6x sand
+tile.s7.name=7x sand
+tile.s8.name=8x sand
+tile.s9.name=9x sand
+
+tile.sand_gen_lvl1.name=§7Iron sand generator
+tile.sand_gen_lvl2.name=§6Gold sand generator
+tile.sand_gen_lvl3.name=§bDiamond sand generator
+tile.sand_gen_lvl4.name=§aEmerald sand generator

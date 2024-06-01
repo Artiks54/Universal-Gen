@@ -77,7 +77,14 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-
+    maven { // Мавен, который поддерживает JEI.
+        name = "Progwml6 maven"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+    maven { // Мавен, который поддерживает JEI, для резерва.
+        name = "ModMaven"
+        url = "modmaven.k-4u.nl"
+    }
 }
 
 dependencies {
@@ -87,6 +94,12 @@ dependencies {
             version: "${minecraft_version}-${forge_version}"
     ])
     implementation 'org.jetbrains:annotations:23.0.0'
+    runtimeOnly "curse.maven:the-one-probe-245211:2667280"
+    compileOnly "curse.maven:the-one-probe-245211:2667280"
+    runtimeOnly "curse.maven:top-addons-247111:2887479"
+    compileOnly "curse.maven:top-addons-247111:2887479"
+    compileOnly "mezz.jei:jei_${minecraft_version}:${jei_version}:api"
+    runtimeOnly "mezz.jei:jei_${minecraft_version}:${jei_version}"
     runtimeOnly fileTree('lib')
     compileOnly fileTree('lib')
     compileOnly fileTree('libs')

@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "universalgen:sandgen",
+	    "textures": {
+        "base": "universalgen:blocks/iron",
+		"sand": "universalgen:blocks/sand",
+		"lava": "universalgen:blocks/lava",
+		"water": "universalgen:blocks/water",
+        "particle":  "universalgen:blocks/iron"
+        },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "destroyed": [{}]
+  }
+}

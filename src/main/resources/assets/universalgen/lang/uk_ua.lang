@@ -1,0 +1,16 @@
+itemGroup.universalgen=Universal generator
+
+tile.s1.name=1x Пісок
+tile.s2.name=2x Пісок
+tile.s3.name=3x Пісок
+tile.s4.name=4x Пісок
+tile.s5.name=5x Пісок
+tile.s6.name=6x Пісок
+tile.s7.name=7x Пісок
+tile.s8.name=8x Пісок
+tile.s9.name=9x Пісок
+
+tile.sand_gen_lvl1.name=§7Залізний генератор пісок
+tile.sand_gen_lvl2.name=§6Золотий генератор пісок
+tile.sand_gen_lvl3.name=§bАлмазний генератор пісок
+tile.sand_gen_lvl4.name=§aСмарагдовий генератор пісок

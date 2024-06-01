@@ -1,0 +1,18 @@
+//Localized by artiks4471
+
+itemGroup.universalgen=Universal generator
+
+tile.s1.name=1x Песок
+tile.s2.name=2x Песок
+tile.s3.name=3x Песок
+tile.s4.name=4x Песок
+tile.s5.name=5x Песок
+tile.s6.name=6x Песок
+tile.s7.name=7x Песок
+tile.s8.name=8x Песок
+tile.s9.name=9x Песок
+
+tile.sand_gen_lvl1.name=§7Железный генератор песка
+tile.sand_gen_lvl2.name=§6Золотой генератор песка
+tile.sand_gen_lvl3.name=§bАлмазный генератор песка
+tile.sand_gen_lvl4.name=§aИзумрудный генератор песка
