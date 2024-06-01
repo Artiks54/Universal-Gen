@@ -27,7 +27,7 @@ import javax.annotation.Nonnull;
 public class CobbleGenTile extends TileEntityLockable  implements ITickable {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY);
     public int count,mode;
-    private final Block BlockGenerated = Blocks.SAND;
+    private final Block BlockGenerated = Blocks.COBBLESTONE;
     private final int NeedTickToGenerate = 200;
     private int progress;
     private int addProgress = 1;
