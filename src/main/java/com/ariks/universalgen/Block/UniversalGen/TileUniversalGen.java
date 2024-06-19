@@ -8,6 +8,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,7 +21,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import org.jetbrains.annotations.NotNull;
 
-public class TileUniversalGen extends ExampleTile implements ITickable, IInventory {
+public class TileUniversalGen extends ExampleTile implements ITickable, IInventory, ISidedInventory {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(4, ItemStack.EMPTY);
     public int mode;
     public int amount = 1;
@@ -270,5 +271,20 @@ public class TileUniversalGen extends ExampleTile implements ITickable, IInvento
             progress = 0;
         }
         this.UpdateTile();
+    }
+    @Override
+    public int[] getSlotsForFace(EnumFacing enumFacing) {
+        return new int[4];
+    }
+    @Override
+    public boolean canInsertItem(int index, ItemStack itemStack, EnumFacing enumFacing) {
+        return false;
+    }
+    @Override
+    public boolean canExtractItem(int index, ItemStack itemStack, EnumFacing enumFacing) {
+        if(index == 0){
+            return true;
+        }
+        return false;
     }
 }

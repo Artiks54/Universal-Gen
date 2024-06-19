@@ -12,6 +12,7 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -43,12 +44,6 @@ public class BlockUniversalGen extends Block {
         }
         return true;
     }
-
-    @Override
-    public boolean isNormalCube(IBlockState p_149721_1_) {
-        return super.isNormalCube(p_149721_1_);
-    }
-
     @Override
     public boolean hasTileEntity(@NotNull IBlockState state) {
         return true;
@@ -63,6 +58,10 @@ public class BlockUniversalGen extends Block {
         assert tileEntity != null;
         InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileEntity);
         super.breakBlock(worldIn, pos, state);
+    }
+    @Override
+    public @NotNull AxisAlignedBB getBoundingBox(@NotNull IBlockState state, @NotNull IBlockAccess source, @NotNull BlockPos pos) {
+        return new AxisAlignedBB(0.062, 0, 0.062, 0.938, 0.875, 0.938);
     }
     @Override
     public boolean isOpaqueCube(@NotNull IBlockState state) {
