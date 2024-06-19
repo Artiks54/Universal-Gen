@@ -1,11 +1,9 @@
 package com.ariks.universalgen.Register;
 
-import com.ariks.universalgen.Block.COBBLE.CobbleGenBlock;
-import com.ariks.universalgen.Block.COBBLE.CobbleGenBlockEnum;
-import com.ariks.universalgen.Block.COBBLE.CompressedCobbleBlock;
-import com.ariks.universalgen.Block.SAND.SandGenBlock;
-import com.ariks.universalgen.Block.SAND.SandGenBlockEnum;
-import com.ariks.universalgen.Block.SAND.CompressedSandBlock;
+import com.ariks.universalgen.Block.CommpressedBlock.CompressedCobbleBlock;
+import com.ariks.universalgen.Block.CommpressedBlock.CompressedGravelBlock;
+import com.ariks.universalgen.Block.CommpressedBlock.CompressedSandBlock;
+import com.ariks.universalgen.Block.UniversalGen.BlockUniversalGen;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -20,16 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class RegistryBlock {
-    public static Block SandGenLvl1 = new SandGenBlock("sand_gen_lvl1", SandGenBlockEnum.lvl_1);
-    public static Block SandGenLvl2 = new SandGenBlock("sand_gen_lvl2", SandGenBlockEnum.lvl_2);
-    public static Block SandGenLvl3 = new SandGenBlock("sand_gen_lvl3", SandGenBlockEnum.lvl_3);
-    public static Block SandGenLvl4 = new SandGenBlock("sand_gen_lvl4", SandGenBlockEnum.lvl_4);
-    public static Block SandGenLvl5 = new SandGenBlock("sand_gen_lvl5", SandGenBlockEnum.lvl_5);
-    public static Block CobbleGenLvl1 = new CobbleGenBlock("cobble_gen_lvl1", CobbleGenBlockEnum.lvl_1);
-    public static Block CobbleGenLvl2 = new CobbleGenBlock("cobble_gen_lvl2", CobbleGenBlockEnum.lvl_2);
-    public static Block CobbleGenLvl3 = new CobbleGenBlock("cobble_gen_lvl3", CobbleGenBlockEnum.lvl_3);
-    public static Block CobbleGenLvl4 = new CobbleGenBlock("cobble_gen_lvl4", CobbleGenBlockEnum.lvl_4);
-    public static Block CobbleGenLvl5 = new CobbleGenBlock("cobble_gen_lvl5", CobbleGenBlockEnum.lvl_5);
+    public static Block Universal_Generator = new BlockUniversalGen("universal_generator");
     public static Block S1  = new CompressedSandBlock("s1","9 blocks");
     public static Block S2  = new CompressedSandBlock("s2","81 blocks");
     public static Block S3  = new CompressedSandBlock("s3","729 blocks");
@@ -48,6 +37,16 @@ public class RegistryBlock {
     public static Block C7  = new CompressedCobbleBlock("c7","4.782.969 blocks");
     public static Block C8  = new CompressedCobbleBlock("c8","43.046.721 blocks");
     public static Block C9  = new CompressedCobbleBlock("c9","387.420.489 blocks");
+    public static Block G1  = new CompressedGravelBlock("g1","9 blocks");
+    public static Block G2  = new CompressedGravelBlock("g2","81 blocks");
+    public static Block G3  = new CompressedGravelBlock("g3","729 blocks");
+    public static Block G4  = new CompressedGravelBlock("g4","6.561 blocks");
+    public static Block G5  = new CompressedGravelBlock("g5","59.049 blocks");
+    public static Block G6  = new CompressedGravelBlock("g6","531.441 blocks");
+    public static Block G7  = new CompressedGravelBlock("g7","4.782.969 blocks");
+    public static Block G8  = new CompressedGravelBlock("g8","43.046.721 blocks");
+    public static Block G9  = new CompressedGravelBlock("g9","387.420.489 blocks");
+
     public static final List<Block> BLOCKS = new ArrayList<>();
     static {
         Field[] fields = RegistryBlock.class.getDeclaredFields();

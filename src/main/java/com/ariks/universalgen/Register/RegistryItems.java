@@ -1,6 +1,9 @@
 package com.ariks.universalgen.Register;
 
+import com.ariks.universalgen.Item.UpgradeCount;
+import com.ariks.universalgen.Item.UpgradeGen;
 import com.ariks.universalgen.Item.UpgradeItem;
+import com.ariks.universalgen.Item.UpgradeSpeed;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -13,10 +16,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class RegistryItems {
-    public static Item upgrade_lvl1 = new UpgradeItem("speed_upgrade_1");
-    public static Item upgrade_lvl2 = new UpgradeItem("speed_upgrade_2");
-    public static Item upgrade_lvl3 = new UpgradeItem("speed_upgrade_3");
-    public static Item upgrade_lvl4 = new UpgradeItem("speed_upgrade_4");
+    public static Item upgrade_speed_lvl1 = new UpgradeSpeed("upgrade_speed_lvl1");
+    public static Item upgrade_speed_lvl2 = new UpgradeSpeed("upgrade_speed_lvl2");
+    public static Item upgrade_speed_lvl3 = new UpgradeSpeed("upgrade_speed_lvl3");
+    public static Item upgrade_speed_lvl4 = new UpgradeSpeed("upgrade_speed_lvl4");
+    public static Item upgrade_speed_lvl5 = new UpgradeSpeed("upgrade_speed_lvl5");
+    public static Item upgrade_speed_lvl6 = new UpgradeSpeed("upgrade_speed_lvl6");
+    public static Item upgrade_count_lvl1 = new UpgradeCount("upgrade_count_lvl1");
+    public static Item upgrade_count_lvl2 = new UpgradeCount("upgrade_count_lvl2");
+    public static Item upgrade_count_lvl3 = new UpgradeCount("upgrade_count_lvl3");
+    public static Item upgrade_count_lvl4 = new UpgradeCount("upgrade_count_lvl4");
+    public static Item upgrade_count_lvl5 = new UpgradeCount("upgrade_count_lvl5");
+    public static Item upgrade_count_lvl6 = new UpgradeCount("upgrade_count_lvl6");
+    public static Item upgrade_gen_sand = new UpgradeGen("upgrade_gen_sand");
+    public static Item upgrade_gen_gravel = new UpgradeGen("upgrade_gen_gravel");
+    public static Item upgrade_gen_cobblestone = new UpgradeGen("upgrade_gen_cobblestone");
+    public static Item upgrade_blank = new UpgradeItem("upgrade_blank");
     public static final List<Item> ITEMS = new ArrayList<>();
     static {
         Field[] fields = RegistryItems.class.getDeclaredFields();

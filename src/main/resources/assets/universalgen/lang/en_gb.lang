@@ -24,22 +24,36 @@ tile.c7.name=Compressed Cobblestone 7x
 tile.c8.name=Compressed Cobblestone 8x
 tile.c9.name=Compressed Cobblestone 9x
 
-//Tile Sand generator
-tile.sand_gen_lvl1.name=§7Iron sand generator
-tile.sand_gen_lvl2.name=§6Gold sand generator
-tile.sand_gen_lvl3.name=§bDiamond sand generator
-tile.sand_gen_lvl4.name=§aEmerald sand generator
-tile.sand_gen_lvl5.name=§5Dragon sand generator
+//Compressed Gravel
+tile.g1.name=Compressed Gravel 1x
+tile.g2.name=Compressed Gravel 2x
+tile.g3.name=Compressed Gravel 3x
+tile.g4.name=Compressed Gravel 4x
+tile.g5.name=Compressed Gravel 5x
+tile.g6.name=Compressed Gravel 6x
+tile.g7.name=Compressed Gravel 7x
+tile.g8.name=Compressed Gravel 8x
+tile.g9.name=Compressed Gravel 9x
 
-//Tile Cobblestone generator
-tile.cobble_gen_lvl1.name=§7Iron cobblestone generator
-tile.cobble_gen_lvl2.name=§6Gold cobblestone generator
-tile.cobble_gen_lvl3.name=§bDiamond cobblestone generator
-tile.cobble_gen_lvl4.name=§aEmerald cobblestone generator
-tile.cobble_gen_lvl5.name=§5Dragon cobblestone generator
+//Tile generator
+tile.universal_generator.name=Universal generator
 
 //Items
-item.speed_upgrade_1.name=Iron acceleration module
-item.speed_upgrade_2.name=Gold acceleration module
-item.speed_upgrade_3.name=Diamond acceleration module
-item.speed_upgrade_4.name=Emerald acceleration module
+item.upgrade_speed_lvl1.name=Iron speed module
+item.upgrade_speed_lvl2.name=Gold speed module
+item.upgrade_speed_lvl3.name=Diamond speed module
+item.upgrade_speed_lvl4.name=Emerald speed module
+item.upgrade_speed_lvl5.name=Nether Star speed module
+item.upgrade_speed_lvl6.name=Dragon speed module
+
+item.upgrade_count_lvl1.name=Iron count module
+item.upgrade_count_lvl2.name=Gold count module
+item.upgrade_count_lvl3.name=Diamond count module
+item.upgrade_count_lvl4.name=Emerald count module
+item.upgrade_count_lvl5.name=Nether count speed module
+item.upgrade_count_lvl6.name=Dragon count module
+
+item.upgrade_gen_sand.name=Sand generator module
+item.upgrade_gen_cobblestone.name=Cobblestone generator module
+item.upgrade_gen_gravel.name=Gravel generator module
+item.upgrade_blank.name=Upgrade module

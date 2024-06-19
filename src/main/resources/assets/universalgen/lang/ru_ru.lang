@@ -1,8 +1,8 @@
 //Localized by artiks4471
 
-itemGroup.universalgen=Универсальные генераторы
+itemGroup.universalgen=Universal generator
 
-# Сжатый песок
+//Compressed Sand
 tile.s1.name=Сжатый песок 1x
 tile.s2.name=Сжатый песок 2x
 tile.s3.name=Сжатый песок 3x
@@ -13,7 +13,7 @@ tile.s7.name=Сжатый песок 7x
 tile.s8.name=Сжатый песок 8x
 tile.s9.name=Сжатый песок 9x
 
-# Сжатый булыжник
+//Compressed Cobblestone
 tile.c1.name=Сжатый булыжник 1x
 tile.c2.name=Сжатый булыжник 2x
 tile.c3.name=Сжатый булыжник 3x
@@ -24,22 +24,36 @@ tile.c7.name=Сжатый булыжник 7x
 tile.c8.name=Сжатый булыжник 8x
 tile.c9.name=Сжатый булыжник 9x
 
-//Генератор песка
-tile.sand_gen_lvl1.name=§7Железный генератор песка
-tile.sand_gen_lvl2.name=§6Золотой генератор песка
-tile.sand_gen_lvl3.name=§bАлмазный генератор песка
-tile.sand_gen_lvl4.name=§aИзумрудный генератор песка
-tile.sand_gen_lvl5.name=§5Драконнмй генератор песка
+//Compressed Gravel
+tile.g1.name=Сжатый гравий 1x
+tile.g2.name=Сжатый гравий 2x
+tile.g3.name=Сжатый гравий 3x
+tile.g4.name=Сжатый гравий 4x
+tile.g5.name=Сжатый гравий 5x
+tile.g6.name=Сжатый гравий 6x
+tile.g7.name=Сжатый гравий 7x
+tile.g8.name=Сжатый гравий 8x
+tile.g9.name=Сжатый гравий 9x
 
-//Генератор булыжника
-tile.cobble_gen_lvl1.name=§7Железный генератор булыжника
-tile.cobble_gen_lvl2.name=§6Золотой генератор булыжника
-tile.cobble_gen_lvl3.name=§bАлмазный генератор булыжника
-tile.cobble_gen_lvl4.name=§aИзумрудный генератор булыжника
-tile.cobble_gen_lvl5.name=§5Драконнмй генератор булыжника
+//Tile generator
+tile.universal_generator.name=Универсальный генератор
 
-//Предметы
-item.speed_upgrade_1.name=Железный модуль ускорения
-item.speed_upgrade_2.name=Золотой модуль ускорения
-item.speed_upgrade_3.name=Алмазный модуль ускорения
-item.speed_upgrade_4.name=Изумрудный модуль ускорения
+//Items
+item.upgrade_speed_lvl1.name=Железный модуль скорости
+item.upgrade_speed_lvl2.name=Золотой модуль скорости
+item.upgrade_speed_lvl3.name=Алмазный модуль скорости
+item.upgrade_speed_lvl4.name=Изумрудный модуль скорости
+item.upgrade_speed_lvl5.name=Звездный модуль скорости
+item.upgrade_speed_lvl6.name=Драконний модуль скорости
+
+item.upgrade_count_lvl1.name=Модуль количества x2
+item.upgrade_count_lvl2.name=Модуль количества x4
+item.upgrade_count_lvl3.name=Модуль количества x8
+item.upgrade_count_lvl4.name=Модуль количества x16
+item.upgrade_count_lvl5.name=Модуль количества x32
+item.upgrade_count_lvl6.name=Модуль количества x64
+
+item.upgrade_gen_sand.name=Модуль генерации песка
+item.upgrade_gen_cobblestone.name=Модуль генерации булыжника
+item.upgrade_gen_gravel.name=Модуль генерации гравия
+item.upgrade_blank.name=Пустой модуль

@@ -77,11 +77,11 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-    maven { // Мавен, который поддерживает JEI.
+    maven {
         name = "Progwml6 maven"
         url = "http://dvs1.progwml6.com/files/maven"
     }
-    maven { // Мавен, который поддерживает JEI, для резерва.
+    maven {
         name = "ModMaven"
         url = "modmaven.k-4u.nl"
     }
@@ -94,12 +94,8 @@ dependencies {
             version: "${minecraft_version}-${forge_version}"
     ])
     implementation 'org.jetbrains:annotations:23.0.0'
-    runtimeOnly "curse.maven:the-one-probe-245211:2667280"
-    compileOnly "curse.maven:the-one-probe-245211:2667280"
-    runtimeOnly "curse.maven:top-addons-247111:2887479"
-    compileOnly "curse.maven:top-addons-247111:2887479"
-    compileOnly "mezz.jei:jei_${minecraft_version}:${jei_version}:api"
-    runtimeOnly "mezz.jei:jei_${minecraft_version}:${jei_version}"
+    compileOnly "curse.maven:jei-238222:5101347"
+    runtimeOnly "curse.maven:jei-238222:5101347"
     runtimeOnly fileTree('lib')
     compileOnly fileTree('lib')
     compileOnly fileTree('libs')
@@ -125,7 +121,7 @@ jar {
     manifest {
         attributes([
                 "Specification-Title": project.name,
-                "Specification-Vendor": "ijo42",
+                "Specification-Vendor": "Ariks54",
                 "Specification-Version": "1",
                 "Implementation-Title": project.name,
                 "Implementation-Version": project.version,
@@ -147,7 +143,7 @@ tasks.withType(JavaCompile) {
     options.incremental = true
     sourceCompatibility = targetCompatibility = '1.8'
 }
-jar.archiveFileName = "${project.archivesBaseName}-${project.minecraft_version}-${project.version}.jar"
+jar.archiveFileName = "${project.archivesBaseName}-${project.version}.jar"
 
 jar.finalizedBy('reobfJar')
 defaultTasks 'build'

@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "universalgen:universal_generator",
+	    "textures": {
+        "base": "universalgen:blocks/iron",
+		"cobblestone": "universalgen:blocks/cobblestone",
+		"lava": "universalgen:blocks/lava",
+		"water": "universalgen:blocks/water",
+        "particle":  "universalgen:blocks/iron"
+        },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "destroyed": [{}]
+  }
+}

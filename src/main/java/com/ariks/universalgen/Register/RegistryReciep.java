@@ -10,6 +10,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import static com.ariks.universalgen.Register.RegistryBlock.*;
+import static com.ariks.universalgen.Register.RegistryItems.*;
 
 public class RegistryReciep {
     public static void preInit() {
@@ -73,155 +74,208 @@ public class RegistryReciep {
                     Ingredient.fromItems(Item.getItemFromBlock(input))
             );
         }
-        //SandGen_lvl1
+        //Gravel
+        String[] Gravel_CLevel = {"1G", "2G", "3G", "4G", "5G", "6G", "7G", "8G", "9G"};
+        Block[] Gravel_CBlockInput = {Blocks.GRAVEL, G1, G2, G3, G4, G5, G6, G7, G8};
+        Block[] Gravel_CBlockOutput = {G1, G2, G3, G4, G5, G6, G7, G8, G9};
+        Block[] Gravel_CBlockInputRevers = {G9, G8, G7, G6, G5, G4, G3, G2, G1};
+        Block[] Gravel_CBlockOutputRevers = {G8, G7, G6, G5, G4, G3, G2, G1, Blocks.GRAVEL};
+        for (int i = 0; i < Gravel_CLevel.length; i++) {
+            String level = Gravel_CLevel[i];
+            Block input = Gravel_CBlockInput[i];
+            Block output = Gravel_CBlockOutput[i];
+            String recipeID = "Gravel_" + level;
+            GameRegistry.addShapedRecipe(
+                    new ResourceLocation(UniversalGen.MOD_ID, recipeID), null,
+                    new ItemStack(output),
+                    "CCC",
+                    "CCC",
+                    "CCC",
+                    'C', new ItemStack(input));
+        }
+        for (int i = 0; i < Gravel_CLevel.length; i++) {
+            String level = Gravel_CLevel[i];
+            Block input = Gravel_CBlockInput[i];
+            Block output = Gravel_CBlockOutput[i];
+            String recipeID = "Gravel_Reverse" + level;
+            GameRegistry.addShapelessRecipe(
+                    new ResourceLocation(UniversalGen.MOD_ID, recipeID), null,
+                    new ItemStack(output, 9),
+                    Ingredient.fromItems(Item.getItemFromBlock(input))
+            );
+        }
+        //Count_lvl_6
         GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Sand_gen_lvl_1"), null,
-                new ItemStack(SandGenLvl1),
-                "CCC",
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Count_lvl_6"), null,
+                new ItemStack(upgrade_count_lvl6),
+                "FLF",
+                "BFB",
+                "FLF",
+                'L', new ItemStack(Items.DYE,1,4),
+                'F', new ItemStack(Items.FLINT),
+                'B', new ItemStack(upgrade_count_lvl5));
+        //Count_lvl_5
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Count_lvl_5"), null,
+                new ItemStack(upgrade_count_lvl5),
+                "FLF",
+                "BFB",
+                "FLF",
+                'L', new ItemStack(Items.DYE,1,4),
+                'F', new ItemStack(Items.FLINT),
+                'B', new ItemStack(upgrade_count_lvl4));
+        //Count_lvl_4
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Count_lvl_4"), null,
+                new ItemStack(upgrade_count_lvl4),
+                "FLF",
+                "BFB",
+                "FLF",
+                'L', new ItemStack(Items.DYE,1,4),
+                'F', new ItemStack(Items.FLINT),
+                'B', new ItemStack(upgrade_count_lvl3));
+        //Count_lvl_3
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Count_lvl_3"), null,
+                new ItemStack(upgrade_count_lvl3),
+                "FLF",
+                "BFB",
+                "FLF",
+                'L', new ItemStack(Items.DYE,1,4),
+                'F', new ItemStack(Items.FLINT),
+                'B', new ItemStack(upgrade_count_lvl2));
+        //Count_lvl_2
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Count_lvl_2"), null,
+                new ItemStack(upgrade_count_lvl2),
+                "FLF",
+                "BFB",
+                "FLF",
+                'L', new ItemStack(Items.DYE,1,4),
+                'F', new ItemStack(Items.FLINT),
+                'B', new ItemStack(upgrade_count_lvl1));
+        //Count_lvl_1
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Count_lvl_1"), null,
+                new ItemStack(upgrade_count_lvl1),
+                "LPL",
+                "WBU",
+                "LPL",
+                'L', new ItemStack(Items.DYE,1,4),
+                'P', new ItemStack(Blocks.PISTON),
+                'B', new ItemStack(upgrade_blank),
+                'U', new ItemStack(Items.LAVA_BUCKET),
+                'W', new ItemStack(Items.WATER_BUCKET));
+        //Speed_lvl_6
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Speed_lvl_6"), null,
+                new ItemStack(upgrade_speed_lvl6),
+                "IRI",
+                "RBR",
+                "IRI",
+                'B', new ItemStack(upgrade_speed_lvl5),
+                'R', new ItemStack(Items.REDSTONE),
+                'I', new ItemStack(Items.DRAGON_BREATH));
+        //Speed_lvl_5
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Speed_lvl_5"), null,
+                new ItemStack(upgrade_speed_lvl5),
+                "IRI",
+                "RBR",
+                "IRI",
+                'B', new ItemStack(upgrade_speed_lvl4),
+                'R', new ItemStack(Items.REDSTONE),
+                'I', new ItemStack(Items.NETHER_STAR));
+        //Speed_lvl_4
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Speed_lvl_4"), null,
+                new ItemStack(upgrade_speed_lvl4),
+                "IRI",
+                "RBR",
+                "IRI",
+                'B', new ItemStack(upgrade_speed_lvl3),
+                'R', new ItemStack(Items.REDSTONE),
+                'I', new ItemStack(Items.EMERALD));
+        //Speed_lvl_3
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Speed_lvl_3"), null,
+                new ItemStack(upgrade_speed_lvl3),
+                "IRI",
+                "RBR",
+                "IRI",
+                'B', new ItemStack(upgrade_speed_lvl2),
+                'R', new ItemStack(Items.REDSTONE),
+                'I', new ItemStack(Items.DIAMOND));
+        //Speed_lvl_2
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Speed_lvl_2"), null,
+                new ItemStack(upgrade_speed_lvl2),
+                "IRI",
+                "RBR",
+                "IRI",
+                'B', new ItemStack(upgrade_speed_lvl1),
+                'R', new ItemStack(Items.REDSTONE),
+                'I', new ItemStack(Items.GOLD_INGOT));
+        //Speed_lvl_1
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Speed_lvl_1"), null,
+                new ItemStack(upgrade_speed_lvl1),
+                "IRI",
+                "RBR",
+                "IRI",
+                'B', new ItemStack(upgrade_blank),
+                'R', new ItemStack(Items.REDSTONE),
+                'I', new ItemStack(Items.IRON_INGOT));
+        //Generator_Cobble
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Generator_Cobble"), null,
+                new ItemStack(upgrade_gen_cobblestone),
+                "III",
+                "IBI",
+                "III",
+                'B', new ItemStack(upgrade_blank),
+                'I', new ItemStack(Blocks.COBBLESTONE));
+        //Generator_Gravel
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Generator_Gravel"), null,
+                new ItemStack(upgrade_gen_gravel),
+                "III",
+                "IBI",
+                "III",
+                'B', new ItemStack(upgrade_blank),
+                'I', new ItemStack(Blocks.GRAVEL));
+        //Generator_Sand
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Generator_Sand"), null,
+                new ItemStack(upgrade_gen_sand),
+                "III",
+                "IBI",
+                "III",
+                'B', new ItemStack(upgrade_blank),
+                'I', new ItemStack(Blocks.SAND));
+        //Upgrade_Blank
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Upgrade_Blank"), null,
+                new ItemStack(upgrade_blank),
+                "IOI",
+                "PFP",
+                "IOI",
+                'O', new ItemStack(Items.DYE,1,14),
+                'I', new ItemStack(Items.IRON_INGOT),
+                'P', new ItemStack(Items.PAPER),
+                'F', new ItemStack(Items.ITEM_FRAME));
+        //Universal_Generator
+        GameRegistry.addShapedRecipe(
+                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Universal_Generator"), null,
+                new ItemStack(Universal_Generator),
+                "CSG",
                 "WPL",
-                "CCC",
-                'C', new ItemStack(Blocks.SAND),
-                'W', new ItemStack(Items.WATER_BUCKET),
-                'P', new ItemStack(Blocks.IRON_BLOCK),
-                'L', new ItemStack(Items.LAVA_BUCKET));
-        //SandGen_lvl2
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Sand_gen_lvl_2"), null,
-                new ItemStack(SandGenLvl2),
-                "CCC",
-                "WPL",
-                "CCC",
-                'C', new ItemStack(S1),
-                'W', new ItemStack(SandGenLvl1),
-                'P', new ItemStack(Blocks.GOLD_BLOCK),
-                'L', new ItemStack(SandGenLvl1));
-        //SandGen_lvl3
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Sand_gen_lvl_3"), null,
-                new ItemStack(SandGenLvl3),
-                "CCC",
-                "WPL",
-                "CCC",
-                'C', new ItemStack(S2),
-                'W', new ItemStack(SandGenLvl2),
-                'P', new ItemStack(Blocks.DIAMOND_BLOCK),
-                'L', new ItemStack(SandGenLvl2));
-        //SandGen_lvl4
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Sand_gen_lvl_4"), null,
-                new ItemStack(SandGenLvl4),
-                "CCC",
-                "WPL",
-                "CCC",
-                'C', new ItemStack(S3),
-                'W', new ItemStack(SandGenLvl3),
-                'P', new ItemStack(Blocks.EMERALD_BLOCK),
-                'L', new ItemStack(SandGenLvl3));
-        //SandGen_lvl5
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Sand_gen_lvl_5"), null,
-                new ItemStack(SandGenLvl5),
-                "CDC",
-                "NGN",
-                "CDC",
-                'C', new ItemStack(S4),
-                'D', new ItemStack(Blocks.DRAGON_EGG),
-                'N', new ItemStack(Items.NETHER_STAR),
-                'G', new ItemStack(SandGenLvl4));
-        //CobbleGen_Lvl_1
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_1"), null,
-                new ItemStack(CobbleGenLvl1),
-                "CCC",
-                "WPL",
-                "CCC",
-                'C', new ItemStack(Blocks.COBBLESTONE),
-                'W', new ItemStack(Items.WATER_BUCKET),
-                'P', new ItemStack(Blocks.IRON_BLOCK),
-                'L', new ItemStack(Items.LAVA_BUCKET));
-        //CobbleGen_Lvl_2
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_2"), null,
-                new ItemStack(CobbleGenLvl2),
-                "CCC",
-                "WPL",
-                "CCC",
+                "CSG",
                 'C', new ItemStack(C1),
-                'W', new ItemStack(CobbleGenLvl1),
-                'P', new ItemStack(Blocks.GOLD_BLOCK),
-                'L', new ItemStack(CobbleGenLvl1));
-        //CobbleGen_Lvl_3
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_3"), null,
-                new ItemStack(CobbleGenLvl3),
-                "CCC",
-                "WPL",
-                "CCC",
-                'C', new ItemStack(C2),
-                'W', new ItemStack(CobbleGenLvl2),
-                'P', new ItemStack(Blocks.DIAMOND_BLOCK),
-                'L', new ItemStack(CobbleGenLvl2));
-        //CobbleGen_Lvl_4
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_4"), null,
-                new ItemStack(CobbleGenLvl4),
-                "CCC",
-                "WPL",
-                "CCC",
-                'C', new ItemStack(C3),
-                'W', new ItemStack(CobbleGenLvl3),
-                'P', new ItemStack(Blocks.EMERALD_BLOCK),
-                'L', new ItemStack(CobbleGenLvl3));
-        //CobbleGen_Lvl_5
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Cobble_gen_lvl_5"), null,
-                new ItemStack(CobbleGenLvl5),
-                "CDC",
-                "NGN",
-                "CDC",
-                'C', new ItemStack(C4),
-                'D', new ItemStack(Blocks.DRAGON_EGG),
-                'N', new ItemStack(Items.NETHER_STAR),
-                'G', new ItemStack(CobbleGenLvl4));
-        //Upgrade_Module_1
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Upgrade_Module_1"), null,
-                new ItemStack(RegistryItems.upgrade_lvl1),
-                "SSS",
-                "BCB",
-                "SSS",
-                'S', new ItemStack(Items.IRON_INGOT),
-                'C', new ItemStack(Items.IRON_PICKAXE),
-                'B', new ItemStack(Blocks.PISTON));
-        //Upgrade_Module_2
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Upgrade_Module_2"), null,
-                new ItemStack(RegistryItems.upgrade_lvl2),
-                "SSS",
-                "BCB",
-                "SSS",
-                'S', new ItemStack(Items.GOLD_INGOT),
-                'C', new ItemStack(Items.GOLDEN_PICKAXE),
-                'B', new ItemStack(RegistryItems.upgrade_lvl1));
-        //Upgrade_Module_3
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Upgrade_Module_3"), null,
-                new ItemStack(RegistryItems.upgrade_lvl3),
-                "SSS",
-                "BCB",
-                "SSS",
-                'S', new ItemStack(Items.DIAMOND),
-                'C', new ItemStack(Items.DIAMOND_PICKAXE),
-                'B', new ItemStack(RegistryItems.upgrade_lvl2));
-        //Upgrade_Module_4
-        GameRegistry.addShapedRecipe(
-                new ResourceLocation(UniversalGen.MOD_ID + ":" + "Upgrade_Module_4"), null,
-                new ItemStack(RegistryItems.upgrade_lvl4),
-                "SSS",
-                "BCB",
-                "SSS",
-                'S', new ItemStack(Items.EMERALD),
-                'C', new ItemStack(Items.NETHER_STAR),
-                'B', new ItemStack(RegistryItems.upgrade_lvl3));
+                'S', new ItemStack(S1),
+                'G', new ItemStack(G1),
+                'W', new ItemStack(Items.WATER_BUCKET),
+                'P', new ItemStack(Blocks.HOPPER),
+                'L', new ItemStack(Items.LAVA_BUCKET));
     }
 }
