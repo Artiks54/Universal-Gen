@@ -16,7 +16,9 @@ public class CommonProxy {
     }
     public void Init(){
         RegistryNetwork.init();
-        MinecraftForge.EVENT_BUS.register(new JoinDiscord());
+        if(Config.BooleanHelloMsg) {
+            MinecraftForge.EVENT_BUS.register(new JoinDiscord());
+        }
     }
     public void postInit(){
     }

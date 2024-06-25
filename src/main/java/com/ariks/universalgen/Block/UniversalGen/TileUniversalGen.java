@@ -3,6 +3,7 @@ package com.ariks.universalgen.Block.UniversalGen;
 import com.ariks.universalgen.Block.ExampleTile;
 import com.ariks.universalgen.Register.RegistryGui;
 import com.ariks.universalgen.Register.RegistryItems;
+import com.ariks.universalgen.Util.InvWrapperRestricted;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
@@ -19,16 +20,24 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.items.CapabilityItemHandler;
 import org.jetbrains.annotations.NotNull;
+import java.util.Collections;
 
 public class TileUniversalGen extends ExampleTile implements ITickable, IInventory, ISidedInventory {
-    private final NonNullList<ItemStack> inventory = NonNullList.withSize(4, ItemStack.EMPTY);
+    protected NonNullList<ItemStack> inventory;
     public int mode;
     public int amount = 1;
     private ItemStack itemGenerated = ItemStack.EMPTY;
     private final int NeedTickToGenerate = 200;
+    private final InvWrapperRestricted invHandler;
     private int progress;
     private int addProgress = 1;
+    public TileUniversalGen(){
+        invHandler = new InvWrapperRestricted(this);
+        inventory = NonNullList.withSize(4,ItemStack.EMPTY);
+        invHandler.setSlotsExtract(Collections.singletonList(0));
+    }
     @Override
     public void update() {
         if (!world.isRemote) {
@@ -277,14 +286,28 @@ public class TileUniversalGen extends ExampleTile implements ITickable, IInvento
         return new int[4];
     }
     @Override
-    public boolean canInsertItem(int index, ItemStack itemStack, EnumFacing enumFacing) {
-        return false;
+    public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
+        return invHandler.canInsert(index);
     }
     @Override
-    public boolean canExtractItem(int index, ItemStack itemStack, EnumFacing enumFacing) {
-        if(index == 0){
+    public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
+        return invHandler.canExtract(index);
+    }
+    @Override
+    public boolean hasCapability(net.minecraftforge.common.capabilities.Capability<?> capability, EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && this.getSizeInventory() > 0)
+        {
             return true;
         }
-        return false;
+        return super.hasCapability(capability, facing);
+    }
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T getCapability(net.minecraftforge.common.capabilities.Capability<T> capability, EnumFacing facing) {
+        if (capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        {
+            return (T) invHandler;
+        }
+        return super.getCapability(capability, facing);
     }
 }

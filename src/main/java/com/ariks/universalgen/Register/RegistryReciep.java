@@ -1,6 +1,7 @@
 package com.ariks.universalgen.Register;
 
 import com.ariks.universalgen.UniversalGen;
+import com.ariks.universalgen.Util.Config;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -15,6 +16,7 @@ import static com.ariks.universalgen.Register.RegistryItems.*;
 public class RegistryReciep {
     public static void preInit() {
         //COBBLE_STONE
+        if(Config.BooleanCompressedCobblestone){
         String[] Cobble_CLevel = {"1C", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C"};
         Block[] Cobble_CBlockInput = {Blocks.COBBLESTONE, C1, C2, C3, C4, C5, C6, C7, C8};
         Block[] Cobble_CBlockOutput = {C1, C2, C3, C4, C5, C6, C7, C8, C9};
@@ -44,7 +46,9 @@ public class RegistryReciep {
                     Ingredient.fromItems(Item.getItemFromBlock(input))
             );
         }
+    }
         //Sand
+        if(Config.BooleanCompressedSand){
         String[] Sand_CLevel = {"1S", "2S", "3S", "4S", "5S", "6S", "7S", "8S", "9S"};
         Block[] Sand_CBlockInput = {Blocks.SAND, S1, S2, S3, S4, S5, S6, S7, S8};
         Block[] Sand_CBlockOutput = {S1, S2, S3, S4, S5, S6, S7, S8, S9};
@@ -74,35 +78,38 @@ public class RegistryReciep {
                     Ingredient.fromItems(Item.getItemFromBlock(input))
             );
         }
+    }
         //Gravel
-        String[] Gravel_CLevel = {"1G", "2G", "3G", "4G", "5G", "6G", "7G", "8G", "9G"};
-        Block[] Gravel_CBlockInput = {Blocks.GRAVEL, G1, G2, G3, G4, G5, G6, G7, G8};
-        Block[] Gravel_CBlockOutput = {G1, G2, G3, G4, G5, G6, G7, G8, G9};
-        Block[] Gravel_CBlockInputRevers = {G9, G8, G7, G6, G5, G4, G3, G2, G1};
-        Block[] Gravel_CBlockOutputRevers = {G8, G7, G6, G5, G4, G3, G2, G1, Blocks.GRAVEL};
-        for (int i = 0; i < Gravel_CLevel.length; i++) {
-            String level = Gravel_CLevel[i];
-            Block input = Gravel_CBlockInput[i];
-            Block output = Gravel_CBlockOutput[i];
-            String recipeID = "Gravel_" + level;
-            GameRegistry.addShapedRecipe(
-                    new ResourceLocation(UniversalGen.MOD_ID, recipeID), null,
-                    new ItemStack(output),
-                    "CCC",
-                    "CCC",
-                    "CCC",
-                    'C', new ItemStack(input));
-        }
-        for (int i = 0; i < Gravel_CLevel.length; i++) {
-            String level = Gravel_CLevel[i];
-            Block input = Gravel_CBlockInput[i];
-            Block output = Gravel_CBlockOutput[i];
-            String recipeID = "Gravel_Reverse" + level;
-            GameRegistry.addShapelessRecipe(
-                    new ResourceLocation(UniversalGen.MOD_ID, recipeID), null,
-                    new ItemStack(output, 9),
-                    Ingredient.fromItems(Item.getItemFromBlock(input))
-            );
+        if(Config.BooleanCompressedGravel) {
+            String[] Gravel_CLevel = {"1G", "2G", "3G", "4G", "5G", "6G", "7G", "8G", "9G"};
+            Block[] Gravel_CBlockInput = {Blocks.GRAVEL, G1, G2, G3, G4, G5, G6, G7, G8};
+            Block[] Gravel_CBlockOutput = {G1, G2, G3, G4, G5, G6, G7, G8, G9};
+            Block[] Gravel_CBlockInputRevers = {G9, G8, G7, G6, G5, G4, G3, G2, G1};
+            Block[] Gravel_CBlockOutputRevers = {G8, G7, G6, G5, G4, G3, G2, G1, Blocks.GRAVEL};
+            for (int i = 0; i < Gravel_CLevel.length; i++) {
+                String level = Gravel_CLevel[i];
+                Block input = Gravel_CBlockInput[i];
+                Block output = Gravel_CBlockOutput[i];
+                String recipeID = "Gravel_" + level;
+                GameRegistry.addShapedRecipe(
+                        new ResourceLocation(UniversalGen.MOD_ID, recipeID), null,
+                        new ItemStack(output),
+                        "CCC",
+                        "CCC",
+                        "CCC",
+                        'C', new ItemStack(input));
+            }
+            for (int i = 0; i < Gravel_CLevel.length; i++) {
+                String level = Gravel_CLevel[i];
+                Block input = Gravel_CBlockInput[i];
+                Block output = Gravel_CBlockOutput[i];
+                String recipeID = "Gravel_Reverse" + level;
+                GameRegistry.addShapelessRecipe(
+                        new ResourceLocation(UniversalGen.MOD_ID, recipeID), null,
+                        new ItemStack(output, 9),
+                        Ingredient.fromItems(Item.getItemFromBlock(input))
+                );
+            }
         }
         //Count_lvl_6
         GameRegistry.addShapedRecipe(
@@ -271,9 +278,9 @@ public class RegistryReciep {
                 "CSG",
                 "WPL",
                 "CSG",
-                'C', new ItemStack(C1),
-                'S', new ItemStack(S1),
-                'G', new ItemStack(G1),
+                'C', new ItemStack(Blocks.COBBLESTONE),
+                'S', new ItemStack(Blocks.SAND),
+                'G', new ItemStack(Blocks.GRAVEL),
                 'W', new ItemStack(Items.WATER_BUCKET),
                 'P', new ItemStack(Blocks.HOPPER),
                 'L', new ItemStack(Items.LAVA_BUCKET));
