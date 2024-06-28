@@ -8,6 +8,7 @@ import java.io.File;
 
 public class Config {
     protected static Configuration config;
+    public static int tick;
     public static boolean BooleanHelloMsg,BooleanCompressedCobblestone,BooleanCompressedSand,BooleanCompressedGravel;
     public static void init(File file) {
         config = new Configuration(file);
@@ -18,6 +19,7 @@ public class Config {
             BooleanCompressedCobblestone = config.getBoolean("Compressed_Cobblestone",General,true,"register");
             BooleanCompressedSand = config.getBoolean("Compressed_Sand",General,true,"register");
             BooleanCompressedGravel = config.getBoolean("Compressed_Gravel",General,true,"register");
+            tick = config.getInt("Tick_Generated",General,200,1, Short.MAX_VALUE,"Need tick to generated... 'default:200'");
         } finally {
             if(config.hasChanged()) config.save();
         }

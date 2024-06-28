@@ -23,7 +23,7 @@ public abstract class ExampleTile extends TileEntity implements ITileHas, IInter
     }
     @Override
     public @NotNull String getName() {
-        return this.world.getBlockState(pos).getBlock().getUnlocalizedName();
+        return this.getBlockType().getUnlocalizedName() + ".name";
     }
     public int[] getValueList() {
         return new int[0];
