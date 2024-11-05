@@ -1,59 +1,15 @@
 //Localized by artiks4471
 
-itemGroup.universalgen=Universal generator
-
-//Compressed Sand
-tile.s1.name=Сжатый песок 1x
-tile.s2.name=Сжатый песок 2x
-tile.s3.name=Сжатый песок 3x
-tile.s4.name=Сжатый песок 4x
-tile.s5.name=Сжатый песок 5x
-tile.s6.name=Сжатый песок 6x
-tile.s7.name=Сжатый песок 7x
-tile.s8.name=Сжатый песок 8x
-tile.s9.name=Сжатый песок 9x
-
-//Compressed Cobblestone
-tile.c1.name=Сжатый булыжник 1x
-tile.c2.name=Сжатый булыжник 2x
-tile.c3.name=Сжатый булыжник 3x
-tile.c4.name=Сжатый булыжник 4x
-tile.c5.name=Сжатый булыжник 5x
-tile.c6.name=Сжатый булыжник 6x
-tile.c7.name=Сжатый булыжник 7x
-tile.c8.name=Сжатый булыжник 8x
-tile.c9.name=Сжатый булыжник 9x
-
-//Compressed Gravel
-tile.g1.name=Сжатый гравий 1x
-tile.g2.name=Сжатый гравий 2x
-tile.g3.name=Сжатый гравий 3x
-tile.g4.name=Сжатый гравий 4x
-tile.g5.name=Сжатый гравий 5x
-tile.g6.name=Сжатый гравий 6x
-tile.g7.name=Сжатый гравий 7x
-tile.g8.name=Сжатый гравий 8x
-tile.g9.name=Сжатый гравий 9x
+itemGroup.universalgen=Универсальный генератор
 
 //Tile generator
-tile.universal_generator.name=Универсальный генератор
+tile.universal_generator.name=§7Универсальный генератор
+tile.universal_generator_advanced.name=§eУлучшенный универсальный генератор
+tile.universal_generator_ultimate.name=§bУльтимативный универсальный генератор
+tile.universal_generator_dragon.name=§5Драконий универсальный генератор
 
-//Items
-item.upgrade_speed_lvl1.name=Железный модуль скорости
-item.upgrade_speed_lvl2.name=Золотой модуль скорости
-item.upgrade_speed_lvl3.name=Алмазный модуль скорости
-item.upgrade_speed_lvl4.name=Изумрудный модуль скорости
-item.upgrade_speed_lvl5.name=Звездный модуль скорости
-item.upgrade_speed_lvl6.name=Драконний модуль скорости
-
-item.upgrade_count_lvl1.name=Модуль количества x2
-item.upgrade_count_lvl2.name=Модуль количества x4
-item.upgrade_count_lvl3.name=Модуль количества x8
-item.upgrade_count_lvl4.name=Модуль количества x16
-item.upgrade_count_lvl5.name=Модуль количества x32
-item.upgrade_count_lvl6.name=Модуль количества x64
-
-item.upgrade_gen_sand.name=Модуль генерации песка
-item.upgrade_gen_cobblestone.name=Модуль генерации булыжника
-item.upgrade_gen_gravel.name=Модуль генерации гравия
-item.upgrade_blank.name=Пустой модуль
+universalgen_gui.button.StrRedstone=Редстоун режим
+universalgen_gui.button.StrRedstoneRevers=Обратный редстоун режим
+universalgen_gui.button.working=Не выбрано
+universalgen_gui.button.always=Игнорирование
+universalgen_gui.button.image=Количество

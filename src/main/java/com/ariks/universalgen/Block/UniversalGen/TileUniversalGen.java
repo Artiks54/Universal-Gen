@@ -1,188 +1,141 @@
 package com.ariks.universalgen.Block.UniversalGen;
 
-import com.ariks.universalgen.Block.TileExampleInventory;
-import com.ariks.universalgen.Item.UpgradeCount;
-import com.ariks.universalgen.Item.UpgradeGen;
-import com.ariks.universalgen.Item.UpgradeSpeed;
+import com.ariks.universalgen.Core.TileExampleInventory;
 import com.ariks.universalgen.Register.RegistryGui;
-import com.ariks.universalgen.Register.RegistryItems;
 import com.ariks.universalgen.Util.Config;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TileUniversalGen extends TileExampleInventory implements ITickable {
-    public int mode;
-    public int amount = 1;
-    private ItemStack itemGenerated = ItemStack.EMPTY;
-    private final int NeedTickToGenerate = Config.tick;
     private int progress;
-    private int addProgress = 1;
+    private int amount = 1;
+    private int amountMode = 1;
+    private boolean redstoneSignal,redstoneMode;
+    private int booleanMode;
+    private int currentItemIndex = 0;
+    private static final List<ItemStack> itemsToGenerate = new ArrayList<>();
     public TileUniversalGen(){
-        super(4);
-        this.setSlotsForInsert(1,4);
-        this.setSlotsForExtract(0);
+        super(9);
+        this.setSlotsForExtract(0,9);
+    }
+    public int maxProgress() {
+        return Config.RequiredGeneratorTick;
     }
     @Override
     public void update() {
         if (!world.isRemote) {
-            if(mode == 0) {
-                this.GenerateSandMyInventory();
+            this.CheckRedstoneSignal();
+            if(this.CanGenerate() && (booleanMode == 1 || redstoneMode)) {
+                progress++;
+                this.UpdateTile();
+                if(progress >= maxProgress()) {
+                    this.Generate();
+                    progress = 0;
+                }
             }
-            if(mode == 1) {
-                this.GenerateSandOtherInventory();
-            }
-            this.UpdateTile();
         }
     }
-    private void GenerateSandOtherInventory(){
-        this.getUpgradeAmount();
-        for (EnumFacing facing : EnumFacing.VALUES) {
-            BlockPos neighborPos = this.pos.offset(facing);
-            TileEntity tileEntity = world.getTileEntity(neighborPos);
-            if(tileEntity instanceof TileUniversalGen){
-                break;
+    static {
+        itemsToGenerate.add(new ItemStack(Blocks.COBBLESTONE));
+        itemsToGenerate.add(new ItemStack(Blocks.GRAVEL));
+        itemsToGenerate.add(new ItemStack(Blocks.SAND));
+        itemsToGenerate.add(new ItemStack(Blocks.NETHERRACK));
+        itemsToGenerate.add(new ItemStack(Blocks.END_STONE));
+        itemsToGenerate.add(new ItemStack(Blocks.DIRT));
+    }
+    private boolean CanGenerate() {
+        ItemStack item = itemsToGenerate.get(currentItemIndex);
+        for (int i = 0; i < this.getSizeInventory(); i++) {
+                ItemStack stack = this.getStackInSlot(i);
+                if (stack.isEmpty() || (stack.getItem() == item.getItem() && ItemStack.areItemStackTagsEqual(stack, item) && stack.getCount() < stack.getMaxStackSize())) {
+                    return true;
+                }
             }
-            if (tileEntity instanceof IInventory) {
-                IInventory inventors = (IInventory) tileEntity;
-                boolean foundEmptySlot = false;
-                for (int slot = 0; slot < inventors.getSizeInventory(); slot++) {
-                    ItemStack stack = inventors.getStackInSlot(slot);
-                    ItemStack newStack = itemGenerated;
-                    if (stack.isEmpty()) {
-                        if (inventors.isItemValidForSlot(slot, newStack )) {
-                            if(progress >= NeedTickToGenerate){
-                                progress = 0;
-                                inventors.setInventorySlotContents(slot, newStack);
-                            }
-                            foundEmptySlot = true;
-                            break;
-                        }
-                    } else if (stack.getCount() < 64 && stack.getItem() == itemGenerated.getItem()) {
-                        int availableSpace = 64 - stack.getCount();
-                        int toAdd = Math.min(amount, availableSpace);
-                        if (inventors.isItemValidForSlot(slot, itemGenerated)) {
-                            if(progress >= NeedTickToGenerate){
-                                progress = 0;
-                                stack.grow(toAdd);
-                                inventors.setInventorySlotContents(slot, stack);
-                            }
-                            foundEmptySlot = true;
-                            break;
-                        }
+        return false;
+    }
+    private void Generate() {
+        ItemStack item = itemsToGenerate.get(currentItemIndex);
+        this.ToggleAmount();
+        int amountToGenerate = this.amount;
+        int MaxStackSize = 64;
+        for (int i = 0; i < this.getSizeInventory(); i++) {
+            ItemStack stack = this.getStackInSlot(i);
+            if (stack.isEmpty()) {
+                int amountToAdd = Math.min(amountToGenerate, MaxStackSize);
+                this.setInventorySlotContents(i, new ItemStack(item.getItem(), amountToAdd));
+                amountToGenerate -= amountToAdd;
+                if (amountToGenerate == 0) {
+                    return;
+                }
+            } else if (stack.getItem() == item.getItem() && ItemStack.areItemStackTagsEqual(stack, item)) {
+                if (stack.getCount() < MaxStackSize) {
+                    int spaceLeft = MaxStackSize - stack.getCount();
+                    int amountToAdd = Math.min(amountToGenerate, spaceLeft);
+                    stack.grow(amountToAdd);
+                    amountToGenerate -= amountToAdd;
+                    if (amountToGenerate == 0) {
+                        return;
                     }
                 }
-                if(foundEmptySlot && !inventory.get(3).isEmpty()){
-                    this.getUpgradeSpeed();
-                    progress += addProgress;
-                }
             }
         }
     }
-    private void GenerateSandMyInventory() {
-        int slotGenerated = 0;
-        this.getUpgradeAmount();
-        boolean shouldGenerate;
-        if (!inventory.get(slotGenerated).isEmpty() && !ItemStack.areItemsEqual(inventory.get(slotGenerated), itemGenerated)) {
-            shouldGenerate = false;
-        } else {
-            shouldGenerate = true;
-        }
-        if (shouldGenerate && !inventory.get(3).isEmpty() && (inventory.get(slotGenerated).isEmpty() || inventory.get(slotGenerated).getCount() < 64 )) {
-            this.getUpgradeSpeed();
-            progress += addProgress;
-        }
-        if (progress >= NeedTickToGenerate && shouldGenerate) {
-            if (inventory.get(slotGenerated).isEmpty()) {
-                inventory.set(slotGenerated, itemGenerated.copy());
-            } else if (inventory.get(slotGenerated).getCount() < 64 && !inventory.get(3).isEmpty()) {
-                int availableSpace = 64 - inventory.get(slotGenerated).getCount();
-                int toAdd = Math.min(itemGenerated.getCount(), availableSpace);
-                inventory.get(slotGenerated).grow(toAdd);
-            }
-            progress = 0;
+    private void CheckRedstoneSignal() {
+        redstoneMode = (booleanMode == 2 && redstoneSignal) || (booleanMode == 3 && !redstoneSignal);
+    }
+    public void setRedstoneSignal(boolean redstoneSignal) {
+        this.redstoneSignal = redstoneSignal;
+    }
+    public void ToggleWork() {
+        this.progress = 0;
+        booleanMode = (booleanMode + 1) % 4;
+        this.UpdateTile();
+    }
+    public void ToggleAmountMode() {
+        amountMode = (amountMode % 7) + 1;
+        this.ToggleAmount();
+        this.UpdateTile();
+    }
+    private void ToggleAmount(){
+        switch (amountMode){
+            case 1: amount = 1;break;
+            case 2: amount = 2;break;
+            case 3: amount = 4;break;
+            case 4: amount = 8;break;
+            case 5: amount = 16;break;
+            case 6: amount = 32;break;
+            case 7: amount = 64;break;
         }
     }
-    private void getUpgradeGenerator(){
-        if (inventory.get(3).getItem() == RegistryItems.upgrade_gen_cobblestone){
-            itemGenerated = new ItemStack(Blocks.COBBLESTONE,amount);
-        } else if (inventory.get(3).getItem() == RegistryItems.upgrade_gen_sand){
-            itemGenerated = new ItemStack(Blocks.SAND,amount);
-        } else if (inventory.get(3).getItem() == RegistryItems.upgrade_gen_gravel){
-            itemGenerated = new ItemStack(Blocks.GRAVEL,amount);
-        } else if(inventory.get(3).isEmpty()){
-            itemGenerated = ItemStack.EMPTY;
-        }
-    }
-    private void getUpgradeAmount(){
-        if (inventory.get(2).getItem() == RegistryItems.upgrade_count_lvl6){
-            amount = 64;
-        } else if (inventory.get(2).getItem() == RegistryItems.upgrade_count_lvl5){
-            amount = 32;
-        } else if (inventory.get(2).getItem() == RegistryItems.upgrade_count_lvl4){
-            amount = 16;
-        } else if (inventory.get(2).getItem() == RegistryItems.upgrade_count_lvl3){
-            amount = 8;
-        } else if (inventory.get(2).getItem() == RegistryItems.upgrade_count_lvl2){
-            amount = 4;
-        } else if (inventory.get(2).getItem() == RegistryItems.upgrade_count_lvl1){
-            amount = 2;
-        } else if (inventory.get(2).isEmpty()){
-            amount = 1;
-        }
-        this.getUpgradeGenerator();
-    }
-    private void getUpgradeSpeed(){
-        if (inventory.get(1).getItem() == RegistryItems.upgrade_speed_lvl6){
-            addProgress = 200;
-        } else if (inventory.get(1).getItem() == RegistryItems.upgrade_speed_lvl5){
-            addProgress = 50;
-        } else if (inventory.get(1).getItem() == RegistryItems.upgrade_speed_lvl4){
-            addProgress = 25;
-        } else if (inventory.get(1).getItem() == RegistryItems.upgrade_speed_lvl3){
-            addProgress = 10;
-        } else if (inventory.get(1).getItem() == RegistryItems.upgrade_speed_lvl2){
-            addProgress = 5;
-        } else if (inventory.get(1).getItem() == RegistryItems.upgrade_speed_lvl1){
-            addProgress = 2;
-        } else if (inventory.get(1).isEmpty()){
-            addProgress = 1;
-        }
-    }
-    public void ToogleMode(){
-        mode++;
-        progress = 0;
-        if(mode > 1){
-            mode = 0;
-        }
+    public void ToggleItem() {
+        currentItemIndex = (currentItemIndex + 1) % itemsToGenerate.size();
+        this.progress = 0;
+        this.UpdateTile();
     }
     @Override
     public @NotNull NBTTagCompound writeToNBT(@NotNull NBTTagCompound nbt) {
         super.writeToNBT(nbt);
-        nbt.setInteger("progress", progress);
-        nbt.setInteger("amount",amount);
-        nbt.setInteger("mode",mode);
-        nbt.setTag("inventory", ItemStackHelper.saveAllItems(new NBTTagCompound(), inventory));
+        nbt.setInteger("Progress", this.progress);
+        nbt.setInteger("Mode",this.booleanMode);
+        nbt.setInteger("Item",this.currentItemIndex);
+        nbt.setInteger("AmountMode",this.amountMode);
+        nbt.setBoolean("Red",this.redstoneSignal);
         return nbt;
     }
     @Override
     public void readFromNBT(@NotNull NBTTagCompound nbt) {
         super.readFromNBT(nbt);
-        progress = nbt.getInteger("progress");
-        amount = nbt.getInteger("amount");
-        mode = nbt.getInteger("mode");
-        NBTTagCompound inventoryTag = nbt.getCompoundTag("inventory");
-        ItemStackHelper.loadAllItems(inventoryTag, inventory);
+        this.progress = nbt.getInteger("Progress");
+        this.booleanMode = nbt.getInteger("Mode");
+        this.currentItemIndex = nbt.getInteger("Item");
+        this.amountMode = nbt.getInteger("AmountMode");
+        this.redstoneSignal = nbt.getBoolean("Red");
+        this.amountMode = nbt.getInteger("AmountMode");
     }
     @Override
     public int getValue(int id) {
@@ -190,41 +143,21 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
             return progress;
         }
         if(id == 2){
-            return NeedTickToGenerate;
+            return maxProgress();
         }
-        if(id == 3){
-            return mode;
+        if (id == 3) {
+            return this.booleanMode;
+        }
+        if(id == 4){
+            return this.currentItemIndex;
+        }
+        if(id == 5){
+            return this.amountMode;
         }
         return id;
     }
     @Override
-    public void setValue(int id, int value) {
-        if(id == 1){
-            progress = value;
-        }
-        if(id == 3){
-            mode = value;
-        }
-    }
-    @Override
-    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-        return new ContainerUniversalGen(playerInventory,this, playerIn);
-    }
-    @Override
     public String getGuiID() {
         return String.valueOf(RegistryGui.Gui_Universal_gen);
-    }
-    @Override
-    public boolean isItemValidForSlot(int index, ItemStack itemStack) {
-        if(index == 1 && inventory.get(1).isEmpty() && itemStack.getItem() instanceof UpgradeSpeed){
-            return true;
-        }
-        if(index == 2 && inventory.get(2).isEmpty() && itemStack.getItem() instanceof UpgradeCount){
-            return true;
-        }
-        if(index == 3 && inventory.get(3).isEmpty() && itemStack.getItem() instanceof UpgradeGen){
-            return true;
-        }
-        return false;
     }
 }

@@ -1,37 +1,40 @@
 package com.ariks.universalgen.Block.UniversalGen;
 
-import com.ariks.universalgen.Block.ExampleContainer;
+import com.ariks.universalgen.Core.ExampleContainer;
 import com.ariks.universalgen.Util.SlotOut;
-import com.ariks.universalgen.Util.SlotUpgradeCount;
-import com.ariks.universalgen.Util.SlotUpgradeGen;
-import com.ariks.universalgen.Util.SlotUpgradeSpeed;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class ContainerUniversalGen  extends ExampleContainer {
     public ContainerUniversalGen(InventoryPlayer inventoryPlayer, TileUniversalGen tileEntity, EntityPlayer entityPlayer) {
         super(tileEntity);
-        this.addSlotToContainer(new SlotOut(tileEntity, 0, 80, 35));
-        this.addSlotToContainer(new SlotUpgradeSpeed(tileEntity, 1, 58, 9));
-        this.addSlotToContainer(new SlotUpgradeCount(tileEntity, 2, 80, 9));
-        this.addSlotToContainer(new SlotUpgradeGen(tileEntity, 3, 102, 9));
+        this.addSlotToContainer(new SlotOut(tileEntity,0,61,17));
+        this.addSlotToContainer(new SlotOut(tileEntity,1,79,17));
+        this.addSlotToContainer(new SlotOut(tileEntity,2,97,17));
+        this.addSlotToContainer(new SlotOut(tileEntity,3,61,35));
+        this.addSlotToContainer(new SlotOut(tileEntity,4,79,35));
+        this.addSlotToContainer(new SlotOut(tileEntity,5,97,35));
+        this.addSlotToContainer(new SlotOut(tileEntity,6,61,53));
+        this.addSlotToContainer(new SlotOut(tileEntity,7,79,53));
+        this.addSlotToContainer(new SlotOut(tileEntity,8,97,53));
         PlayerInventory(inventoryPlayer);
     }
     @Override
-    public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
+    public @NotNull ItemStack transferStackInSlot(@NotNull EntityPlayer player, int slotIndex) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = inventorySlots.get(slotIndex);
         if (slot != null && slot.getHasStack()) {
             ItemStack slotStack = slot.getStack();
             itemstack = slotStack.copy();
-            if (slotIndex == 0 || slotIndex == 1 || slotIndex == 2 || slotIndex == 3) {
-                if (!this.mergeItemStack(slotStack,4, 40, false)) {
+            if (slotIndex < 9) {
+                if (!this.mergeItemStack(slotStack, 9, 36 + 9, false)) {
                     return ItemStack.EMPTY;
                 }
             } else {
-                if (!this.mergeItemStack(slotStack, 1, 4, false)) {
+                if (!this.mergeItemStack(slotStack, 0, 0, false)) {
                     return ItemStack.EMPTY;
                 }
             }

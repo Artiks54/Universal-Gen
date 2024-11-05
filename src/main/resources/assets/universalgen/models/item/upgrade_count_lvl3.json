@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "universalgen:items/upgrade_count_lvl3"
-  }
-}

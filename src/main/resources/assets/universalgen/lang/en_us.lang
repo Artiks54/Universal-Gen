@@ -2,58 +2,14 @@
 
 itemGroup.universalgen=Universal generator
 
-//Compressed Sand
-tile.s1.name=Compressed Sand 1x
-tile.s2.name=Compressed Sand 2x
-tile.s3.name=Compressed Sand 3x
-tile.s4.name=Compressed Sand 4x
-tile.s5.name=Compressed Sand 5x
-tile.s6.name=Compressed Sand 6x
-tile.s7.name=Compressed Sand 7x
-tile.s8.name=Compressed Sand 8x
-tile.s9.name=Compressed Sand 9x
-
-//Compressed Cobblestone
-tile.c1.name=Compressed Cobblestone 1x
-tile.c2.name=Compressed Cobblestone 2x
-tile.c3.name=Compressed Cobblestone 3x
-tile.c4.name=Compressed Cobblestone 4x
-tile.c5.name=Compressed Cobblestone 5x
-tile.c6.name=Compressed Cobblestone 6x
-tile.c7.name=Compressed Cobblestone 7x
-tile.c8.name=Compressed Cobblestone 8x
-tile.c9.name=Compressed Cobblestone 9x
-
-//Compressed Gravel
-tile.g1.name=Compressed Gravel 1x
-tile.g2.name=Compressed Gravel 2x
-tile.g3.name=Compressed Gravel 3x
-tile.g4.name=Compressed Gravel 4x
-tile.g5.name=Compressed Gravel 5x
-tile.g6.name=Compressed Gravel 6x
-tile.g7.name=Compressed Gravel 7x
-tile.g8.name=Compressed Gravel 8x
-tile.g9.name=Compressed Gravel 9x
-
 //Tile generator
-tile.universal_generator.name=Universal generator
+tile.universal_generator.name=§7Universal generator
+tile.universal_generator_advanced.name=§eAdvanced universal generator
+tile.universal_generator_ultimate.name=§bUltimate universal generator
+tile.universal_generator_dragon.name=§5Dragon universal generator
 
-//Items
-item.upgrade_speed_lvl1.name=Iron speed module
-item.upgrade_speed_lvl2.name=Gold speed module
-item.upgrade_speed_lvl3.name=Diamond speed module
-item.upgrade_speed_lvl4.name=Emerald speed module
-item.upgrade_speed_lvl5.name=Nether Star speed module
-item.upgrade_speed_lvl6.name=Dragon speed module
-
-item.upgrade_count_lvl1.name=Count module x2
-item.upgrade_count_lvl2.name=Count module x4
-item.upgrade_count_lvl3.name=Count module x8
-item.upgrade_count_lvl4.name=Count module x16
-item.upgrade_count_lvl5.name=Count module x32
-item.upgrade_count_lvl6.name=Count module x64
-
-item.upgrade_gen_sand.name=Sand generator module
-item.upgrade_gen_cobblestone.name=Cobblestone generator module
-item.upgrade_gen_gravel.name=Gravel generator module
-item.upgrade_blank.name=Upgrade module
+universalgen_gui.button.StrRedstone=Redstone mode
+universalgen_gui.button.StrRedstoneRevers=Revers redstone mode
+universalgen_gui.button.working=Not selected
+universalgen_gui.button.always=Ignore
+universalgen_gui.button.image=Amount

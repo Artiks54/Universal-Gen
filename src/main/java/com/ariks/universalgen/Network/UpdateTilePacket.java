@@ -38,7 +38,13 @@ public class UpdateTilePacket implements IMessage {
                     if(tile instanceof TileUniversalGen) {
                         TileUniversalGen TileUniversalGen = (TileUniversalGen) tile;
                         if (message.value == 1) {
-                            TileUniversalGen.ToogleMode();
+                            TileUniversalGen.ToggleWork();
+                        }
+                        if (message.value == 2) {
+                            TileUniversalGen.ToggleItem();
+                        }
+                        if (message.value == 3) {
+                            TileUniversalGen.ToggleAmountMode();
                         }
                     }
                 }

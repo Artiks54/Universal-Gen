@@ -20,7 +20,7 @@ public class UniversalGen {
     public static File config;
     public static final String MOD_ID = "universalgen";
     public static final String MOD_NAME = "Universal Gen";
-    public static final String VERSION = "1.4";
+    public static final String VERSION = "1.5";
     public static Logger logger;
     @Mod.Instance(UniversalGen.MOD_ID)
     public static UniversalGen instance;
@@ -29,8 +29,8 @@ public class UniversalGen {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         Config.registerConfig(event);
-        proxy.preInit();
         logger = event.getModLog();
+        proxy.preInit();
     }
     @EventHandler
     public void init(FMLInitializationEvent event){
