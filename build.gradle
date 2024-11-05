@@ -96,6 +96,8 @@ dependencies {
     implementation 'org.jetbrains:annotations:23.0.0'
     compileOnly "curse.maven:jei-238222:5101347"
     runtimeOnly "curse.maven:jei-238222:5101347"
+    compileOnly "curse.maven:crafttweaker-239197:5486112"
+    runtimeOnly "curse.maven:crafttweaker-239197:5486112"
     compileOnly "curse.maven:ae2-extended-life-570458:5411078"
     runtimeOnly "curse.maven:ae2-extended-life-570458:5411078"
     runtimeOnly fileTree('lib')

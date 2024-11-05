@@ -18,10 +18,10 @@ public class Config {
             String Tile = "Tile";
             config.setCategoryComment(Tile,"TileEntity settings.");
             //Universal Generator
-            RequiredGeneratorTick = config.getInt("Tile_Generator_Normal_NeedTick",Tile,20,1,Short.MAX_VALUE,"Need ticks to generate");
-            RequiredGeneratorTickAdvanced = config.getInt("Tile_Generator_Advanced_NeedTick",Tile,10,1,Short.MAX_VALUE,"Need ticks to generate");
-            RequiredGeneratorTickUltimate = config.getInt("Tile_Generator_Ultimate_NeedTick",Tile,5,1,Short.MAX_VALUE,"Need ticks to generate");
-            RequiredGeneratorTickDragon = config.getInt("Tile_Generator_Dragon_NeedTick",Tile,1,1,Short.MAX_VALUE,"Need ticks to generate");
+            RequiredGeneratorTick = config.getInt("Tile_Generator_Normal_NeedTick",Tile,1,1,Short.MAX_VALUE,"Speed");
+            RequiredGeneratorTickAdvanced = config.getInt("Tile_Generator_Advanced_NeedTick",Tile,2,1,Short.MAX_VALUE,"Speed");
+            RequiredGeneratorTickUltimate = config.getInt("Tile_Generator_Ultimate_NeedTick",Tile,5,1,Short.MAX_VALUE,"Speed");
+            RequiredGeneratorTickDragon = config.getInt("Tile_Generator_Dragon_NeedTick",Tile,10,1,Short.MAX_VALUE,"Speed");
         } finally {
             if(config.hasChanged()) config.save();
         }

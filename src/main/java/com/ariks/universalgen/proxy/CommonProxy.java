@@ -3,6 +3,7 @@ package com.ariks.universalgen.proxy;
 import com.ariks.universalgen.Block.UniversalGen.*;
 import com.ariks.universalgen.Register.*;
 import com.ariks.universalgen.UniversalGen;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

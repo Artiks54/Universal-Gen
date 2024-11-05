@@ -5,7 +5,7 @@ import com.ariks.universalgen.Util.Config;
 public class TileUniversalGenAdvanced extends TileUniversalGen {
 
     @Override
-    public int maxProgress() {
-        return Config.RequiredGeneratorTickAdvanced;
+    protected int maxProgress() {
+        return (TileUniversalGenItems.getItemsToGenerate().get(getValue(4)).getGenerationTime() / Config.RequiredGeneratorTickAdvanced);
     }
 }

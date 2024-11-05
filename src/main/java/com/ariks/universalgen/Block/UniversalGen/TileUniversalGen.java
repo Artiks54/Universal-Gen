@@ -3,13 +3,10 @@ package com.ariks.universalgen.Block.UniversalGen;
 import com.ariks.universalgen.Core.TileExampleInventory;
 import com.ariks.universalgen.Register.RegistryGui;
 import com.ariks.universalgen.Util.Config;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
 import org.jetbrains.annotations.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TileUniversalGen extends TileExampleInventory implements ITickable {
     private int progress;
@@ -18,13 +15,13 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
     private boolean redstoneSignal,redstoneMode;
     private int booleanMode;
     private int currentItemIndex = 0;
-    private static final List<ItemStack> itemsToGenerate = new ArrayList<>();
+
     public TileUniversalGen(){
         super(9);
         this.setSlotsForExtract(0,9);
     }
-    public int maxProgress() {
-        return Config.RequiredGeneratorTick;
+    protected int maxProgress() {
+        return (TileUniversalGenItems.getItemsToGenerate().get(currentItemIndex).getGenerationTime() / Config.RequiredGeneratorTick);
     }
     @Override
     public void update() {
@@ -40,16 +37,8 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
             }
         }
     }
-    static {
-        itemsToGenerate.add(new ItemStack(Blocks.COBBLESTONE));
-        itemsToGenerate.add(new ItemStack(Blocks.GRAVEL));
-        itemsToGenerate.add(new ItemStack(Blocks.SAND));
-        itemsToGenerate.add(new ItemStack(Blocks.NETHERRACK));
-        itemsToGenerate.add(new ItemStack(Blocks.END_STONE));
-        itemsToGenerate.add(new ItemStack(Blocks.DIRT));
-    }
     private boolean CanGenerate() {
-        ItemStack item = itemsToGenerate.get(currentItemIndex);
+        ItemStack item = TileUniversalGenItems.getItemsToGenerate().get(currentItemIndex).getItemStack();
         for (int i = 0; i < this.getSizeInventory(); i++) {
                 ItemStack stack = this.getStackInSlot(i);
                 if (stack.isEmpty() || (stack.getItem() == item.getItem() && ItemStack.areItemStackTagsEqual(stack, item) && stack.getCount() < stack.getMaxStackSize())) {
@@ -59,7 +48,7 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
         return false;
     }
     private void Generate() {
-        ItemStack item = itemsToGenerate.get(currentItemIndex);
+        ItemStack item = TileUniversalGenItems.getItemsToGenerate().get(currentItemIndex).getItemStack();
         this.ToggleAmount();
         int amountToGenerate = this.amount;
         int MaxStackSize = 64;
@@ -113,7 +102,7 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
         }
     }
     public void ToggleItem() {
-        currentItemIndex = (currentItemIndex + 1) % itemsToGenerate.size();
+        currentItemIndex = (currentItemIndex + 1) % TileUniversalGenItems.getItemsToGenerate().size();
         this.progress = 0;
         this.UpdateTile();
     }

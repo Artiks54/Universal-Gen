@@ -55,6 +55,9 @@ public class GuiUniversalGen extends ExampleGuiContainer {
         int work = tile.getValue(3);
         int item = tile.getValue(4);
         int amountMode = tile.getValue(5);
+        ItemStack items = TileUniversalGenItems.getItemsToGenerate().get(item).getItemStack();
+        buttonItem.setStackRender(items);
+        ItemString = items.getDisplayName();
         switch (amountMode) {
             case 1: buttonImage.setTexture(0,0); break;
             case 2: buttonImage.setTexture(16,0); break;
@@ -63,32 +66,6 @@ public class GuiUniversalGen extends ExampleGuiContainer {
             case 5: buttonImage.setTexture(64,0); break;
             case 6: buttonImage.setTexture(80,0); break;
             case 7: buttonImage.setTexture(96,0); break;
-        }
-        switch (item) {
-            case 0:
-                buttonItem.setStackRender(new ItemStack(Blocks.COBBLESTONE));
-                ItemString = Blocks.COBBLESTONE.getLocalizedName();
-                break;
-            case 1:
-                buttonItem.setStackRender(new ItemStack(Blocks.GRAVEL));
-                ItemString = Blocks.GRAVEL.getLocalizedName();
-                break;
-            case 2:
-                buttonItem.setStackRender(new ItemStack(Blocks.SAND));
-                ItemString = Blocks.SAND.getLocalizedName();
-                break;
-            case 3:
-                buttonItem.setStackRender(new ItemStack(Blocks.NETHERRACK));
-                ItemString = Blocks.NETHERRACK.getLocalizedName();
-                break;
-            case 4:
-                buttonItem.setStackRender(new ItemStack(Blocks.END_STONE));
-                ItemString = Blocks.END_STONE.getLocalizedName();
-                break;
-            case 5:
-                buttonItem.setStackRender(new ItemStack(Blocks.DIRT));
-                ItemString = Blocks.DIRT.getLocalizedName();
-                break;
         }
         switch (work) {
             case 0:
