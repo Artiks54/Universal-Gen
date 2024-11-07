@@ -1,6 +1,5 @@
 package com.ariks.universalgen.Integration.JEI;
 
-import com.ariks.universalgen.Block.UniversalGen.GeneratorRecipes;
 import com.ariks.universalgen.Register.RegistryBlock;
 import com.ariks.universalgen.UniversalGen;
 import mezz.jei.api.IGuiHelper;
@@ -14,7 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
-public class GeneratorRecipeCategory implements IRecipeCategory<GeneratorRecipes> {
+public class GeneratorRecipeCategory implements IRecipeCategory<GeneratorRecipeJei> {
     private final IDrawable background;
     private final String localizedName;
     private final IDrawableAnimated progressBar;
@@ -50,8 +49,8 @@ public class GeneratorRecipeCategory implements IRecipeCategory<GeneratorRecipes
         return background;
     }
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, GeneratorRecipes recipeWrapper, @NotNull IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, GeneratorRecipeJei GeneratorRecipeJei, @NotNull IIngredients ingredients) {
         recipeLayout.getItemStacks().init(1, false, 61 - 1, 17 - 1);
-        recipeLayout.getItemStacks().set(1, recipeWrapper.getRecipeOutput());
+        recipeLayout.getItemStacks().set(1, GeneratorRecipeJei.getOut());
     }
 }

@@ -1,13 +1,11 @@
 package com.ariks.universalgen.Block.UniversalGen;
 
-import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeneratorRecipes implements  IRecipeWrapper {
+public class GeneratorRecipes {
     private final ItemStack output;
     private final int generationTime;
     public static final List<GeneratorRecipes> recipes = new ArrayList<>();
@@ -30,10 +28,6 @@ public class GeneratorRecipes implements  IRecipeWrapper {
     }
     public static List<GeneratorRecipes> getRecipes() {
         return recipes;
-    }
-    @Override
-    public void getIngredients(IIngredients ingredients) {
-        ingredients.setOutput(ItemStack.class, getRecipeOutput());
     }
     public static void preInit() {
         GeneratorRecipes.addRecipe(new GeneratorRecipes(new ItemStack(Blocks.COBBLESTONE), 20));

@@ -14,7 +14,7 @@ public class AddonJei implements IModPlugin {
 
     public void register(IModRegistry registry) {
         String idUniversal = UniversalGen.MOD_ID + "_universal";
-        registry.handleRecipes(GeneratorRecipes.class, recipe -> recipe, idUniversal);
+        registry.handleRecipes(GeneratorRecipes.class, new GeneratorWrapper(), idUniversal);
         registry.addRecipes(GeneratorRecipes.getRecipes(), idUniversal);
         registry.addRecipeCatalyst(new ItemStack(RegistryBlock.Universal_Generator), idUniversal);
         registry.addRecipeCatalyst(new ItemStack(RegistryBlock.Universal_Generator_Advanced), idUniversal);
