@@ -35,7 +35,7 @@ public class GeneratorRecipes implements  IRecipeWrapper {
     public void getIngredients(IIngredients ingredients) {
         ingredients.setOutput(ItemStack.class, getRecipeOutput());
     }
-    public static void initAllRecipes() {
+    public static void preInit() {
         GeneratorRecipes.addRecipe(new GeneratorRecipes(new ItemStack(Blocks.COBBLESTONE), 20));
         GeneratorRecipes.addRecipe(new GeneratorRecipes(new ItemStack(Blocks.GRAVEL), 40));
         GeneratorRecipes.addRecipe(new GeneratorRecipes(new ItemStack(Blocks.SAND), 40));
