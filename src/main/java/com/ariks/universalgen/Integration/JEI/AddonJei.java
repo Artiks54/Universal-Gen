@@ -1,6 +1,6 @@
 package com.ariks.universalgen.Integration.JEI;
 
-import com.ariks.universalgen.Block.UniversalGen.TileUniversalGenItems;
+import com.ariks.universalgen.Block.UniversalGen.GeneratorRecipes;
 import com.ariks.universalgen.Register.RegistryBlock;
 import com.ariks.universalgen.UniversalGen;
 import mezz.jei.api.IModPlugin;
@@ -14,8 +14,8 @@ public class AddonJei implements IModPlugin {
 
     public void register(IModRegistry registry) {
         String idUniversal = UniversalGen.MOD_ID + "_universal";
-        registry.handleRecipes(GeneratorRecipe.class, recipe -> recipe, idUniversal);
-        registry.addRecipes(TileUniversalGenItems.getRecipes(), idUniversal);
+        registry.handleRecipes(GeneratorRecipes.class, recipe -> recipe, idUniversal);
+        registry.addRecipes(GeneratorRecipes.getRecipes(), idUniversal);
         registry.addRecipeCatalyst(new ItemStack(RegistryBlock.Universal_Generator), idUniversal);
         registry.addRecipeCatalyst(new ItemStack(RegistryBlock.Universal_Generator_Advanced), idUniversal);
         registry.addRecipeCatalyst(new ItemStack(RegistryBlock.Universal_Generator_Ultimate), idUniversal);

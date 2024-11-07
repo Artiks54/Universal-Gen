@@ -1,9 +1,9 @@
 package com.ariks.universalgen.proxy;
 
 import com.ariks.universalgen.Block.UniversalGen.*;
+import com.ariks.universalgen.Block.UniversalGen.GeneratorRecipes;
 import com.ariks.universalgen.Register.*;
 import com.ariks.universalgen.UniversalGen;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -18,6 +18,7 @@ public class CommonProxy {
         GameRegistry.registerTileEntity(TileUniversalGenUltimate.class, new ResourceLocation(UniversalGen.MOD_ID, "universal_generator_ultimate"));
         GameRegistry.registerTileEntity(TileUniversalGenDragon.class, new ResourceLocation(UniversalGen.MOD_ID, "universal_generator_dragon"));
         RegistryReciep.preInit();
+        GeneratorRecipes.initAllRecipes();
         NetworkRegistry.INSTANCE.registerGuiHandler(UniversalGen.instance, new RegistryGui());
     }
     public void Init(){

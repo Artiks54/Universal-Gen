@@ -58,9 +58,9 @@ public class GuiUniversalGen extends ExampleGuiContainer {
     }
     private void UpdateButton() {
         int work = tile.getValue(3);
-        int item = tile.getValue(4);
+        int recipe = tile.getValue(4);
         int amountMode = tile.getValue(5);
-        ItemStack items = TileUniversalGenItems.getItemsToGenerate().get(item).getItemStack();
+        ItemStack items = GeneratorRecipes.getRecipes().get(recipe).getRecipeOutput();
         buttonItem.setStackRender(items);
         ItemString = items.getDisplayName();
         switch (amountMode) {
