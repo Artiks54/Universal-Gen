@@ -8,4 +8,8 @@ public class TileUniversalGenUltimate extends TileUniversalGen {
     protected int maxProgress() {
         return (TileUniversalGenItems.getItemsToGenerate().get(getValue(4)).getGenerationTime() / Config.RequiredGeneratorTickUltimate);
     }
+    @Override
+    protected int maxModesAmount(){
+        return 5;
+    }
 }

@@ -8,9 +8,11 @@ import java.util.List;
 
 public class GeneratorRecipe implements IRecipeWrapper {
     private final ItemStack output;
+    private final int generationTime;
 
-    public GeneratorRecipe(ItemStack output) {
+    public GeneratorRecipe(ItemStack output, int generationTime) {
         this.output = output;
+        this.generationTime = generationTime;
     }
     @Override
     public void getIngredients(IIngredients ingredients) {
@@ -18,5 +20,8 @@ public class GeneratorRecipe implements IRecipeWrapper {
     }
     public List<ItemStack> getOutputs() {
         return Collections.singletonList(output);
+    }
+    public int getGenerationTime() {
+        return generationTime;
     }
 }

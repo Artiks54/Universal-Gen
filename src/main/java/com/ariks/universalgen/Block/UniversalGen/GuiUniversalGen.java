@@ -31,7 +31,12 @@ public class GuiUniversalGen extends ExampleGuiContainer {
     }
     @Override
     public void Tick() {
-        setBarValue(1,tile.getValue(1),tile.getValue(2));
+        int progress = tile.getValue(1);
+        int maxProgress = tile.getValue(2);
+        String formattedValueMin = numberFormat.format(progress);
+        String formattedValueMax = numberFormat.format(maxProgress);
+        setBarValue(1,progress,maxProgress);
+        setTooltipBar(1,LS.StrProgress+" "+formattedValueMin+ " / " + formattedValueMax);
     }
     @Override
     public void TickScreen() {

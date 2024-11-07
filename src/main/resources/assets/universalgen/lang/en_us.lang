@@ -13,3 +13,4 @@ universalgen_gui.button.StrRedstoneRevers=Revers redstone mode
 universalgen_gui.button.working=Not selected
 universalgen_gui.button.always=Ignore
 universalgen_gui.button.image=Amount
+universalgen_gui.bar.progress=Progress:

@@ -10,4 +10,5 @@ public class LocalizedStringKey {
     public String StrTextWorking = I18n.format(modid+"gui.button.working");
     public String StrTextAlways = I18n.format(modid+"gui.button.always");
     public String StrImageString = I18n.format(modid+"gui.button.image");
+    public String StrProgress = I18n.format(modid+"gui.bar.progress");
 }

@@ -8,4 +8,8 @@ public class TileUniversalGenDragon extends TileUniversalGen {
     protected int maxProgress() {
         return (TileUniversalGenItems.getItemsToGenerate().get(getValue(4)).getGenerationTime() / Config.RequiredGeneratorTickDragon);
     }
+    @Override
+    protected int maxModesAmount(){
+        return 7;
+    }
 }

@@ -25,7 +25,7 @@ public class TileUniversalGenItems {
     public static List<GeneratorRecipe> getRecipes() {
         List<GeneratorRecipe> recipes = new ArrayList<>();
         for (GeneratedItem item : itemsToGenerate) {
-            recipes.add(new GeneratorRecipe(item.getItemStack()));
+            recipes.add(new GeneratorRecipe(item.getItemStack(),item.getGenerationTime()));
         }
         return recipes;
     }
