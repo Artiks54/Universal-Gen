@@ -2,7 +2,7 @@
 
 
 ![Version](https://img.shields.io/badge/VERSION-red.svg?style=for-the-badge)
-![ver](https://img.shields.io/badge/1.7-red.svg?style=for-the-badge)
+![ver](https://img.shields.io/badge/1.8-red.svg?style=for-the-badge)
 
 [![CurseForge name](https://cf.way2muchnoise.eu/title/1025904.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/universal-generator)
 [![CurseForge name](https://cf.way2muchnoise.eu/universal_generator.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/universal-generator)![MCVersion](http://cf.way2muchnoise.eu/versions/570458.svg?badge_style=for_the_badge)
