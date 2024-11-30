@@ -16,24 +16,16 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
     private boolean redstoneSignal,redstoneMode;
     private int booleanMode;
     private int currentRecipe;
-
-    private List<GeneratorRecipes> getGeneratorRecipes() {
-        return GeneratorRecipes.getRecipes();
-    }
-
     public TileUniversalGen(){
         super(9);
         this.setSlotsForExtract(0,9);
     }
     protected int maxProgress() {
         List<GeneratorRecipes> recipes = GeneratorRecipes.getRecipes();
-        if (checkRecipes(recipes)) {
-            return (recipes.get(currentRecipe).getGenerationTime() / Config.RequiredGeneratorTick);
+        if (!recipes.isEmpty()) {
+            return recipes.get(currentRecipe).getGenerationTime() / Config.RequiredGeneratorTick;
         }
         return 0;
-    }
-    private boolean checkRecipes(List<GeneratorRecipes> recipes) {
-        return recipes != null && !recipes.isEmpty();
     }
     protected int maxModesAmount(){
         return 1;
@@ -42,7 +34,7 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
     public void update() {
         if (!world.isRemote) {
             this.CheckRedstoneSignal();
-            if(this.CanGenerate() && (booleanMode == 1 || redstoneMode)) {
+            if(this.canGenerate() && (booleanMode == 1 || redstoneMode)) {
                 progress++;
                 this.UpdateTile();
                 if(progress >= maxProgress()) {
@@ -52,13 +44,12 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
             }
         }
     }
-    private boolean CanGenerate() {
-        List<GeneratorRecipes> recipes = getGeneratorRecipes();
+    private boolean canGenerate() {
+        List<GeneratorRecipes> recipes = GeneratorRecipes.getRecipes();
         if (!recipes.isEmpty()) {
-            GeneratorRecipes recipe = recipes.get(currentRecipe);
-            ItemStack item = recipe.getRecipeOutput();
-            for (int i = 0; i < this.getSizeInventory(); i++) {
-                ItemStack stack = this.getStackInSlot(i);
+            ItemStack item = recipes.get(currentRecipe).getRecipeOutput();
+            for (int i = 0; i < getSizeInventory(); i++) {
+                ItemStack stack = getStackInSlot(i);
                 if (stack.isEmpty() || (ItemStack.areItemsEqual(stack, item) && ItemStack.areItemStackTagsEqual(stack, item) && stack.getCount() < stack.getMaxStackSize())) {
                     return true;
                 }
@@ -67,37 +58,34 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
         return false;
     }
     private void Generate() {
-        List<GeneratorRecipes> recipes = getGeneratorRecipes();
+        List<GeneratorRecipes> recipes = GeneratorRecipes.getRecipes();
         if (!recipes.isEmpty()) {
-            GeneratorRecipes recipe = recipes.get(currentRecipe);
-            ItemStack item = recipe.getRecipeOutput();
-            this.ToggleAmount();
-            int amountToGenerate = this.amount;
-            int MaxStackSize = 64;
-            for (int i = 0; i < this.getSizeInventory(); i++) {
-                ItemStack stack = this.getStackInSlot(i);
+            ItemStack item = recipes.get(currentRecipe).getRecipeOutput();
+            toggleAmount();
+            int amountToGenerate = amount;
+            int maxStackSize = 64;
+            for (int i = 0; i < getSizeInventory(); i++) {
+                ItemStack stack = getStackInSlot(i);
                 if (stack.isEmpty()) {
-                    int amountToAdd = Math.min(amountToGenerate, MaxStackSize);
+                    int amountToAdd = Math.min(amountToGenerate, maxStackSize);
                     ItemStack newStack = item.copy();
                     newStack.setCount(amountToAdd);
-                    this.setInventorySlotContents(i, newStack);
+                    setInventorySlotContents(i, newStack);
                     amountToGenerate -= amountToAdd;
                     if (amountToGenerate == 0) {
                         return;
                     }
                 } else if (ItemStack.areItemsEqual(stack, item) && ItemStack.areItemStackTagsEqual(stack, item)) {
-                    if (stack.getCount() < MaxStackSize) {
-                        int spaceLeft = MaxStackSize - stack.getCount();
-                        int amountToAdd = Math.min(amountToGenerate, spaceLeft);
-                        stack.grow(amountToAdd);
-                        amountToGenerate -= amountToAdd;
-                        if (amountToGenerate == 0) {
-                            return;
-                        }
+                    int spaceLeft = maxStackSize - stack.getCount();
+                    int amountToAdd = Math.min(amountToGenerate, spaceLeft);
+                    stack.grow(amountToAdd);
+                    amountToGenerate -= amountToAdd;
+                    if (amountToGenerate == 0) {
+                        return;
                     }
                 }
             }
-    }
+        }
     }
     private void CheckRedstoneSignal() {
         redstoneMode = (booleanMode == 2 && redstoneSignal) || (booleanMode == 3 && !redstoneSignal);
@@ -106,30 +94,22 @@ public class TileUniversalGen extends TileExampleInventory implements ITickable 
         this.redstoneSignal = redstoneSignal;
     }
     public void ToggleWork() {
-        this.progress = 0;
+        progress = 0;
         booleanMode = (booleanMode + 1) % 4;
-        this.UpdateTile();
+        UpdateTile();
     }
     public void ToggleAmountMode() {
         amountMode = (amountMode % maxModesAmount()) + 1;
-        this.ToggleAmount();
-        this.UpdateTile();
+        toggleAmount();
+        UpdateTile();
     }
-    private void ToggleAmount(){
-        switch (amountMode){
-            case 1: amount = 1;break;
-            case 2: amount = 2;break;
-            case 3: amount = 4;break;
-            case 4: amount = 8;break;
-            case 5: amount = 16;break;
-            case 6: amount = 32;break;
-            case 7: amount = 64;break;
-        }
+    private void toggleAmount() {
+        amount = 1 << (amountMode - 1);
     }
     public void ToggleItem() {
         currentRecipe = (currentRecipe + 1) % GeneratorRecipes.getRecipes().size();
-        this.progress = 0;
-        this.UpdateTile();
+        progress = 0;
+        UpdateTile();
     }
     @Override
     public @NotNull NBTTagCompound writeToNBT(@NotNull NBTTagCompound nbt) {

@@ -15,7 +15,7 @@ public class GeneratorRecipes {
         this.generationTime = generationTime;
     }
     public ItemStack getRecipeOutput() {
-        return output;
+        return output.copy();
     }
     public int getGenerationTime() {
         return generationTime;
