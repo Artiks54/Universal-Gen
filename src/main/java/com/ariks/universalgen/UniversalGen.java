@@ -20,7 +20,7 @@ public class UniversalGen {
     public static File config;
     public static final String MOD_ID = "universalgen";
     public static final String MOD_NAME = "Universal Gen";
-    public static final String VERSION = "1.7";
+    public static final String VERSION = "1.8";
     public static Logger logger;
     @Mod.Instance(UniversalGen.MOD_ID)
     public static UniversalGen instance;
